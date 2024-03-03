@@ -6,6 +6,7 @@ import {
   updateRole,
 } from "../controllers/role.controller.js";
 
+
 const router = express.Router();
 
 // create a new role in Database
