@@ -1,9 +1,13 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import roleRoute from "./routes/role.js";
 
 const app = express();
 dotenv.config();
+
+app.use(express.json());
+app.use("/api/role", roleRoute);
 
 // Database Connection
 const connectMongoDB = async () => {
@@ -14,8 +18,6 @@ const connectMongoDB = async () => {
     throw error;
   }
 };
-// 15:00
-// app.use("/api/role");
 
 app.listen(8800, () => {
   connectMongoDB();
