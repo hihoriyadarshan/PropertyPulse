@@ -3,12 +3,12 @@ import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import {confirmPasswordValidator} from "../../validators/confirm-password.validators";
 import { AuthService } from '../../services/auth.service';
-import { Router } from 'express';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
@@ -16,7 +16,9 @@ export default class RegisterComponent implements OnInit{
 
   fb = inject(FormBuilder);
   authService = inject(AuthService)
-  // router = inject(Router);
+  router = inject(Router);
+
+
   registerForm !: FormGroup;
   ngOnInit(): void {
     this.registerForm = this.fb.group({
@@ -40,8 +42,8 @@ register(){
   .subscribe({
     next:(res)=>{
       alert("User Created");
-      // this.registerForm.reset();
-      // this.router.navigate(['login'])
+      this.registerForm.reset();
+      this.router.navigate(['login'])
     },
     error:(err)=>{
       console.log(err);
