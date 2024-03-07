@@ -6,6 +6,7 @@ import { CreateSuccess } from "../utils/success.js";
 import { CreateError } from "../utils/error.js";
 import nodemailer from "nodemailer";
 import UserToken from "../models/UserToken.js";
+import { response } from "express";
 
 export const register = async (req, res, next) => {
   const role = await Role.find({ role: "User" });
@@ -123,15 +124,43 @@ export const sendEmail = async (req, res, next) => {
     </html>
     `,
   };
-    mailTransporter.sendMail(mailDetails, async(err, data)=>{
-      if(err){
-        console.log(err); 
-        return next(CreateError(500, "Something went wrong while sending the email "))
-        
-      }else{
-        await newToken.save();
-        return next(CreateSuccess(200), "Email-send Successfully")
-      }
+  mailTransporter.sendMail(mailDetails, async (err, data) => {
+    if (err) {
+      console.log(err);
+      return next(
+        CreateError(500, "Something went wrong while sending the email ")
+      );
+    } else {
+      await newToken.save();
+      return next(CreateSuccess(200, "Email-send Successfully"));
+    }
+  });
+};
 
-    })
+export const resetPassword = (req, res, next) => {
+  const token = req.body.token;
+  const newPassword = req.body.password;
+
+  jwt.verify(token, process.env.Jwt_SECRET, async (err, data) => {
+    if (err) {
+      return next(CreateError(500, "Reset link is Expired!"));
+    } else {
+      const response = data;
+      const user = await User.findOne({
+        email: { $regex: "^" + response.email + "$", $options: "i" },
+      });
+      const salt = await bcrypt.genSalt(10);
+      const encryptedPassword = await bcrypt.hash(newPassword, salt);
+      user.password = encryptedPassword;
+      try {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: user._id },
+          { $set: user },
+          { new: true }
+        );
+        return next(CreateSuccess(200, "Reset Password Sucessfully"));
+      } catch (error) {}
+      return next(CreateError(500, "Something went wrong while resetting the password"));
+    }
+  });
 };

@@ -1,7 +1,8 @@
 import mongoose, { Schema } from "mongoose";
 
 const TokenSchema = mongoose.Schema({
-  UserId: {
+  userId: {
+    // Changed from UserId to userId
     type: Schema.Types.ObjectId,
     required: true,
     ref: "User",
