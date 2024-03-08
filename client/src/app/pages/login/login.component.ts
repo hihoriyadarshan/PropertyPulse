@@ -33,6 +33,7 @@ export default class LoginComponent {
     .subscribe({
       next:(res)=>{
         alert("Login is Successfully!");
+        localStorage.setItem("user_id", res.data._id)
         this.router.navigate(['home']);
         this.loginForm.reset();
       },
