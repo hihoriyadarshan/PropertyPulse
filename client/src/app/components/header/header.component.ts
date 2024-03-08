@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
@@ -10,9 +10,27 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   
-  authService = inject(AuthService);
-  isLoggedIn : boolean = this.authService.isLoggedIn();
+  // isLoggedIn: boolean = false;
 
+  // constructor(private authService: AuthService) {}
+  // ngOnInit(): void {
+    // this.isLoggedIn = this.authService.isLoggedIn();
+  // }
+
+  authService = inject(AuthService);
+  isLoggedIn: boolean = false;
+
+  ngOnInit(): void {
+    this.authService.isLoggedIn$.subscribe(res=>{
+     this.isLoggedIn = this.authService.isLoggedIn();
+    })
+  }
+
+
+  logout(){
+    localStorage.removeItem("user_id");
+    this.authService.isLoggedIn$.next(false);
+  }
 }

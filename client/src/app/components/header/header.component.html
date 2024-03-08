@@ -23,28 +23,33 @@
   </div>
 
   <div class="nav-items">
-    <span
-      routerLink="/login"
-      class="text-xl cursor-pointer text-gray-200 font-bold m-3 hover:underline hover:text-indigo-200"
-    >
-      Login</span
-    >
-    <span
-      routerLink="/register"
-      class="text-xl cursor-pointer text-gray-200 font-bold m-3 hover:underline hover:text-indigo-200"
-    >
-      Registration</span
-    >
-    <span
-      class="text-xl cursor-pointer text-gray-200 font-bold m-3 hover:underline hover:text-indigo-200"
-    >
-      Profile</span
-    >
-    <span
-      routerLink="/login"
-      class="text-xl cursor-pointer text-gray-200 font-bold m-3 hover:underline hover:text-indigo-200"
-    >
-      Logout</span
-    >
+    <ng-container *ngIf="!isLoggedIn">
+      <span
+        routerLink="/login"
+        class="text-xl cursor-pointer text-gray-200 font-bold m-3 hover:underline hover:text-indigo-200"
+      >
+        Login</span
+      >
+      <span
+        routerLink="/register"
+        class="text-xl cursor-pointer text-gray-200 font-bold m-3 hover:underline hover:text-indigo-200"
+      >
+        Registration</span
+      >
+    </ng-container>
+    <ng-container *ngIf="isLoggedIn">
+      <span
+        class="text-xl cursor-pointer text-gray-200 font-bold m-3 hover:underline hover:text-indigo-200"
+      >
+        Profile</span
+      >
+      <span
+        routerLink="/login"
+        (click)="logout()"
+        class="text-xl cursor-pointer text-gray-200 font-bold m-3 hover:underline hover:text-indigo-200"
+      >
+        Logout</span
+      >
+    </ng-container>
   </div>
 </nav>

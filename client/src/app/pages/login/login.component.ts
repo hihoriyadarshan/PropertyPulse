@@ -34,6 +34,7 @@ export default class LoginComponent {
       next:(res)=>{
         alert("Login is Successfully!");
         localStorage.setItem("user_id", res.data._id)
+        this.authService.isLoggedIn$.next(true);
         this.router.navigate(['home']);
         this.loginForm.reset();
       },
