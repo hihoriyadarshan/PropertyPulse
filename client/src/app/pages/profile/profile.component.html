@@ -1,1 +1,21 @@
-<p>profile works!</p>
+<div class="profile-container">
+  <h2>User Profile</h2>
+  <div *ngIf="userId">
+    <!-- <p>User ID: {{ userId }}</p> -->
+    <!-- <div *ngIf="!userId"> -->
+    <!-- <p>No user ID found.</p> -->
+    <!-- </div> -->
+    <p>First Name: {{ firstName }}</p>
+    <div *ngIf="!firstName">
+      <p>firstName not found.</p>
+    </div>
+    <p>Last Name: {{ lastName }}</p>
+    <div *ngIf="!lastName">
+      <p>lastName not found.</p>
+    </div>
+    <p>E-mail: {{ email }}</p>
+    <div *ngIf="!email">
+      <p>email not found.</p>
+    </div>
+  </div>
+</div>
