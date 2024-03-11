@@ -8,6 +8,7 @@ import nodemailer from "nodemailer";
 import UserToken from "../models/UserToken.js";
 import { response } from "express";
 
+// user registration
 export const register = async (req, res, next) => {
   const role = await Role.find({ role: "User" });
   const salt = await bcrypt.genSalt(10);
@@ -24,6 +25,7 @@ export const register = async (req, res, next) => {
   return res.status(200).json("User Register Sucessfully");
 };
 
+//role registration
 export const registerAdmin = async (req, res, next) => {
   const role = await Role.find({});
   const salt = await bcrypt.genSalt(10);
@@ -41,6 +43,7 @@ export const registerAdmin = async (req, res, next) => {
   return next(CreateSuccess(200, "Admin Register Sucessfully"));
 };
 
+// login controller
 export const login = async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.body.email }).populate(
@@ -76,6 +79,7 @@ export const login = async (req, res, next) => {
   }
 };
 
+//Send Email to forger password
 export const sendEmail = async (req, res, next) => {
   const email = req.body.email;
   const user = await User.findOne({
@@ -137,6 +141,7 @@ export const sendEmail = async (req, res, next) => {
   });
 };
 
+// Reset password(Forget)
 export const resetPassword = (req, res, next) => {
   const token = req.body.token;
   const newPassword = req.body.password;
@@ -160,7 +165,44 @@ export const resetPassword = (req, res, next) => {
         );
         return next(CreateSuccess(200, "Reset Password Sucessfully"));
       } catch (error) {}
-      return next(CreateError(500, "Something went wrong while resetting the password"));
+      return next(
+        CreateError(500, "Something went wrong while resetting the password")
+      );
     }
   });
 };
+
+// profile update
+// Profile update controller
+const updateProfile = async (req, res) => {
+  const { id } = req.params; // Destructure 'id' from request params
+
+  try {
+    // Find the user by id
+    const user = await User.findById(id);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Update user profile based on request body
+    user.firstName = req.body.firstName;
+    user.lastName = req.body.lastName;
+    user.username = req.body.username;
+    user.email = req.body.email;
+
+    // Make sure to update all necessary fields accordingly
+
+    // Save the updated user
+    await user.save();
+
+    return res
+      .status(200)
+      .json({ message: "Profile updated successfully", user });
+  } catch (error) {
+    console.error("Error updating profile:", error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+export { updateProfile };

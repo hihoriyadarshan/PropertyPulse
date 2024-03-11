@@ -5,6 +5,7 @@ import {
   registerAdmin,
   resetPassword,
   sendEmail,
+  updateProfile,
 } from "../controllers/auth.controller.js";
 
 const router = express.Router();
@@ -24,5 +25,8 @@ router.post("/send-email", sendEmail);
 
 //reset-password
 router.post("/reset-password", resetPassword);
+
+// profile update
+router.post("/profile-update/:id", updateProfile);
 
 export default router;
