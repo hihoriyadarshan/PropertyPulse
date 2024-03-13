@@ -1,3 +1,19 @@
 body{
     color: black;
 }
+
+.navigation-links{
+    margin-left: 510px;
+    color: black;
+    font-size: larger;
+    font-weight: 500;
+}
+
+.navigation-links span {
+    text-decoration: none; /* Remove underline by default */
+}
+
+.navigation-links span:hover {
+    color: #06bbcc;
+    text-decoration: none;
+}
