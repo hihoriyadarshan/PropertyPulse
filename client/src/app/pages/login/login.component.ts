@@ -39,14 +39,19 @@ export default class LoginComponent {
         localStorage.setItem("username", res.data.username)
         localStorage.setItem("email",res.data.email)
         this.authService.isLoggedIn$.next(true);
-        this.router.navigate(['home']);
+        if (res.data.isAdmin === true) {
+
+          this.router.navigate(['admin-dashboard']);
+        } else {
+          this.router.navigate(['home']);
+        }
         this.loginForm.reset();
       },
       error:(err)=>{
-        console.log(err)
-        alert(err.error)
-      }
-    }) 
-  }
+        console.log(err);
+        alert(err.error.message);
+      }
+    })
+  }
 
 }

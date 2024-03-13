@@ -1,4 +1,3 @@
-<!-- Navbar Start -->
 <nav
   class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0"
 >
@@ -11,109 +10,42 @@
     </h2>
   </a>
   <div class="navigation-links">
-    <span routerLink="/home" class="text-xl cursor-pointer font-bold m-3">
-      Home</span
+    <span routerLink="/home" class="text-xl cursor-pointer font-bold m-3"
+      >Home</span
     >
-    <span routerLink="/about" class="text-xl cursor-pointer font-bold m-3">
-      About</span
+    <span routerLink="/about" class="text-xl cursor-pointer font-bold m-3"
+      >About</span
     >
     <span
       routerLink="/home"
       class="text-xl cursor-pointer font-bold m-3 hover:text-indigo-200"
+      >Property</span
     >
-      Property</span
+    <span routerLink="/contact" class="text-xl cursor-pointer font-bold m-3"
+      >Contact</span
     >
-
-    <span routerLink="/contact" class="text-xl cursor-pointer font-bold m-3">
-      Contact</span
-    >
-
     <ng-container *ngIf="!isLoggedIn">
-      <span routerLink="/login" class="text-xl cursor-pointer font-bold m-3">
-        Login</span
+      <span routerLink="/login" class="text-xl cursor-pointer font-bold m-3"
+        >Login</span
       >
       <span
         routerLink="/register"
         class="text-xl cursor-pointer font-bold m-3 hover:underline"
-      >
-        Registration</span
+        >Registration</span
       >
     </ng-container>
-
     <ng-container *ngIf="isLoggedIn">
       <span
         routerLink="/profile"
         class="text-xl cursor-pointer font-bold m-3 hover:underline"
-      >
-        Profile</span
+        >Profile</span
       >
       <span
         routerLink="/login"
         (click)="logout()"
         class="text-xl cursor-pointer font-bold m-3 hover:underline"
-      >
-        Logout</span
+        >Logout</span
       >
     </ng-container>
   </div>
 </nav>
-
-<!-- Navbar End -->
-
-<!-- boostrap back-up navbar  -->
-<!-- <nav
-  class="w-full flex justify-between items-center p-5 bg-indigo-500 shadow-lg"
->
-  <div class="logo">
-    <span class="text-gray-200 text-4xl flex justify-start items-center"
-      >Proparty+</span
-    >
-  </div>
-  <div class="search relative">
-    <span class="absolute mt-1.5 mx-3">
-      <i class="fa fa-search font-light" aria-hidden="true"></i
-    ></span>
-    <input
-      type="text"
-      placeholder=" search Proparty"
-      class="w-96 p-2 pl-9 rounded-r-none text-gray-600"
-    />
-    <button
-      class="bg-slate-400 p-2 rounded-r text-white outline-none outline-0"
-    >
-      search
-    </button>
-  </div>
-
-  <div class="nav-items">
-    <ng-container *ngIf="!isLoggedIn">
-      <span
-        routerLink="/login"
-        class="text-xl cursor-pointer text-gray-200 font-bold m-3 hover:underline hover:text-indigo-200"
-      >
-        Login</span
-      >
-      <span
-        routerLink="/register"
-        class="text-xl cursor-pointer text-gray-200 font-bold m-3 hover:underline hover:text-indigo-200"
-      >
-        Registration</span
-      >
-    </ng-container>
-    <ng-container *ngIf="isLoggedIn">
-      <span
-        routerLink="/profile"
-        class="text-xl cursor-pointer text-gray-200 font-bold m-3 hover:underline hover:text-indigo-200"
-      >
-        Profile</span
-      >
-      <span
-        routerLink="/login"
-        (click)="logout()"
-        class="text-xl cursor-pointer text-gray-200 font-bold m-3 hover:underline hover:text-indigo-200"
-      >
-        Logout</span
-      >
-    </ng-container>
-  </div>
-</nav> -->

@@ -1,12 +1,19 @@
 body{
     color: black;
-}
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+}  
+
+
 
 .navigation-links{
     margin-left: 510px;
     color: black;
     font-size: larger;
     font-weight: 500;
+    
 }
 
 .navigation-links span {

@@ -10,5 +10,7 @@ export const routes: Routes = [
     {path: 'reset/:token',loadComponent: ()=> import('./pages/reset/reset.component')},
     {path: 'about',loadComponent: ()=> import('./pages/about/about.component')},
     {path: 'contact',loadComponent: ()=> import('./pages/contact/contact.component')},
+    {path: 'admin-dashboard',loadComponent: ()=> import('./pages/admin-dashboard/admin-dashboard.component')},
+    // {path: 'pagenotfound',loadComponent: ()=> import('./pages/pagenotfound/pagenotfound.component')}
     
 ];
