@@ -1,6 +1,4 @@
-<nav
-  class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0"
->
+<nav class="navbar">
   <a
     href="index.html"
     class="navbar-brand d-flex align-items-center px-4 px-lg-5"
@@ -13,7 +11,7 @@
     <span routerLink="/home" class="text-xl cursor-pointer font-bold m-3"
       >Home</span
     >
-    <span routerLink="/about" class="text-xl cursor-pointer font-bold m-3"
+    <span routerLink="/about" class="text-xl cursor-pointer m-3"
       >About</span
     >
     <span
@@ -21,16 +19,10 @@
       class="text-xl cursor-pointer font-bold m-3 hover:text-indigo-200"
       >Property</span
     >
-    <span routerLink="/contact" class="text-xl cursor-pointer font-bold m-3"
-      >Contact</span
-    >
+    <span routerLink="/contact" class="cursor-pointer m-3">Contact</span>
     <ng-container *ngIf="!isLoggedIn">
-      <span routerLink="/login" class="text-xl cursor-pointer font-bold m-3"
-        >Login</span
-      >
-      <span
-        routerLink="/register"
-        class="text-xl cursor-pointer font-bold m-3 hover:underline"
+      <span routerLink="/login" class="cursor-pointer m-3">Login</span>
+      <span routerLink="/register" class=" cursor-pointer m-3"
         >Registration</span
       >
     </ng-container>

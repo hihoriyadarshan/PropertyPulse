@@ -7,9 +7,47 @@ body{
 }  
 
 
+.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    height: 10vh;
+}
+
+.navbar-expand-lg {
+    flex-grow: 1;
+    flex-basis: 100%;
+    max-width: 100%;
+}
+
+.bg-white {
+    background-color: #fff;
+}
+
+.navbar-light {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.shadow {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sticky-top {
+    position: sticky;
+    top: 0;
+}
+
+.p-0 {
+    padding: 0 !important;
+}
+
+
+
 
 .navigation-links{
-    margin-left: 510px;
+    margin-left: 520px;
     color: black;
     font-size: larger;
     font-weight: 500;
