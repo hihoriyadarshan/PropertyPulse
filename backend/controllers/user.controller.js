@@ -5,9 +5,11 @@ import { CreateSuccess } from "../utils/success.js";
 export const getAllUsers = async (req, res, next) => {
   try {
     const users = await User.find();
-    return next(CreateSuccess(200, "All Users", users));
+    return res.status(200).json(CreateSuccess(200, "All Users", users));
+    //return next(CreateSuccess(200, "All Users", users))
   } catch (error) {
-    return next(CreateError(500, "Internal server Error"));
+    return res.status(500).json(CreateError(500, "Internal Server Error!!"));
+    //return next(CreateError(500, "Internal Server Error!!"))
   }
 };
 
