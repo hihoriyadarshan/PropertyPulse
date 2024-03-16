@@ -34,10 +34,10 @@ export default class LoginComponent {
       next:(res)=>{
         alert("Login is Successfully!");
         localStorage.setItem("user_id",res.data._id)
-        localStorage.setItem("firstName", res.data.firstName)
-        localStorage.setItem("lastName", res.data.lastName)
-        localStorage.setItem("username", res.data.username)
-        localStorage.setItem("email",res.data.email)
+        // localStorage.setItem("firstName", res.data.firstName)
+        // localStorage.setItem("lastName", res.data.lastName)
+        // localStorage.setItem("username", res.data.username)
+        // localStorage.setItem("email",res.data.email)
         this.authService.isLoggedIn$.next(true);
         if (res.data.isAdmin === true) {
 

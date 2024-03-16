@@ -8,6 +8,6 @@ const router = express.Router();
 router.get("/getAllUsers", getAllUsers);
 
 //get id
-router.get("/:id", verifyUser, getById);
+router.get("/:id", getById);
 
 export default router;

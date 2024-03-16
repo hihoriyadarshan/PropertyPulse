@@ -16,9 +16,9 @@ export const getAllUsers = async (req, res, next) => {
 export const getById = async (req, res, next) => {
   try {
     const user = await User.findById(req.params.id);
-    if (!user) return next(CreateError(404, "User is not found"));
-    return next(CreateSuccess(200, "Single User", user));
+    if (!user) return res.status(404).json(CreateError(404, "User is not found"));
+    return res.status(200).json(CreateSuccess(200, "Single User", user));
   } catch (error) {
-    return next(CreateError(500, "Internal server Error"));
+    return res.status(500).json(CreateError(500, "Internal server Error"));
   }
 };

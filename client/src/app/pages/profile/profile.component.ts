@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-profile',
@@ -10,34 +11,25 @@ import { RouterModule } from '@angular/router';
   styleUrl: './profile.component.css'
 })
 export default class ProfileComponent implements OnInit {
-   userId!: string; // Using definite assignment assertion
-  firstName: string | null = null; // Initialized to null
-  lastName: string | null = null; 
-  email: string | null = null; 
+  userProfile: any;
 
-  constructor() { }
+  constructor(private userService: UsersService) { }
 
   ngOnInit(): void {
-    // Retrieve user_id and firstName from localStorage
-    const storedUserId = localStorage.getItem('user_id');
-    const storedFirstName = localStorage.getItem('firstName');
-    const storedLastName = localStorage.getItem('lastName');
-    const storedEmail = localStorage.getItem('email');
-
-    // const storedFirstName = localStorage.getItem('firstName');
-
-    if (storedUserId) {
-     
-      this.userId = storedUserId;
-     
-      this.firstName = storedFirstName || null;
-      this.lastName = storedLastName || null;
-      this.email = storedEmail || null;
-
-
+    const userId = localStorage.getItem('user_id');
+    if (userId) {
+      this.userService.getUserProfileById(userId).subscribe({
+        next: (profile) => {
+          this.userProfile = profile.data; // Assuming profile data is nested under 'data' key
+        },
+        error: (err) => {
+          console.error('Error fetching user profile:', err);
+          // Handle error if needed
+        }
+      });
     } else {
-      // Handle case where user_id doesn't exist in localStorage
       console.error('User ID not found in localStorage');
+      // Handle this case, maybe redirect to login page
     }
   }
 }
