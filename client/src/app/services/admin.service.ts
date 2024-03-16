@@ -6,10 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AdminService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-  getAllUsers(): Observable<any>{
-    return this.http.get('http://localhost:8800/api/user/getAllUsers')
+  getAllUsers(): Observable<any> {
+    return this.http.get('http://localhost:8800/api/user/getAllUsers');
   }
 }

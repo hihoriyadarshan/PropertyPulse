@@ -12,6 +12,6 @@ export class UsersService {
   constructor(private http: HttpClient) {}
 
   getUserProfileById(userId: string): Observable<any> {
-    return this.http.get(`${usersUrls.authServiceApi}${userId}`); // Remove extra slash here
+    return this.http.get(`${usersUrls.authServiceApi}${userId}`); 
   }
 }

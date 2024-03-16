@@ -20,7 +20,7 @@ export default class ProfileComponent implements OnInit {
     if (userId) {
       this.userService.getUserProfileById(userId).subscribe({
         next: (profile) => {
-          this.userProfile = profile.data; // Assuming profile data is nested under 'data' key
+          this.userProfile = profile.data; 
         },
         error: (err) => {
           console.error('Error fetching user profile:', err);
