@@ -11,7 +11,6 @@ export const routes: Routes = [
     {path: 'about',loadComponent: ()=> import('./pages/about/about.component')},
     {path: 'contact',loadComponent: ()=> import('./pages/contact/contact.component')},
     {path: 'admin-dashboard',loadComponent: ()=> import('./pages/admin-dashboard/admin-dashboard.component')},
-    {path: 'admin-users',loadComponent: ()=>import('./pages/admin-users/admin-users.component')},
-    // {path: 'pagenotfound',loadComponent: ()=> import('./pages/pagenotfound/pagenotfound.component')}
-    
+    {path: 'admin-users',loadComponent: ()=>import('./pages/users/users.component')},
+   
 ];

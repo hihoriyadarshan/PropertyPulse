@@ -12,6 +12,11 @@ export class UsersService {
   constructor(private http: HttpClient) {}
 
   getUserProfileById(userId: string): Observable<any> {
-    return this.http.get(`${usersUrls.authServiceApi}${userId}`); 
+    return this.http.get(`${usersUrls.authServiceApi}${userId}`);   
   }
+
+  createContact(contactData: any): Observable<any> {
+    return this.http.post(`${usersUrls.authServiceApi}createcontact`, contactData);
+
+}
 }
