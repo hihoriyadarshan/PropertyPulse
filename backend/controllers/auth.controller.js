@@ -14,11 +14,12 @@ export const register = async (req, res, next) => {
   const salt = await bcrypt.genSalt(10);
   const hashPassword = await bcrypt.hash(req.body.password, salt);
   const newUser = new User({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    username: req.body.userName,
+    username: req.body.username,
+    name: req.body.name,
     email: req.body.email,
     password: hashPassword,
+    address: req.body.address,
+    phone: req.body.phone,
     roles: role,
   });
   await newUser.save();
@@ -31,11 +32,12 @@ export const registerAdmin = async (req, res, next) => {
   const salt = await bcrypt.genSalt(10);
   const hashPassword = await bcrypt.hash(req.body.password, salt);
   const newUser = new User({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
     username: req.body.username,
+    name: req.body.name,
     email: req.body.email,
     password: hashPassword,
+    address: req.body.address,
+    phone: req.body.phone,
     isAdmin: true,
     roles: role,
   });

@@ -19,4 +19,8 @@ export class UsersService {
     return this.http.post(`${usersUrls.authServiceApi}createcontact`, contactData);
 
 }
+
+  getAllContacts(): Observable<any[]> {
+    return this.http.get<any[]>(`${usersUrls.authServiceApi}contacts`);
+}
 }

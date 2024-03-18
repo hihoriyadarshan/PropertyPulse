@@ -19,6 +19,6 @@ router.get("/:id", getById);
 router.post("/createcontact", createContact);
 
 //get All contact (Admin)
-router.get("/admin-contact", getAllContacts);
+router.get("/contacts", getAllContacts);
 
 export default router;

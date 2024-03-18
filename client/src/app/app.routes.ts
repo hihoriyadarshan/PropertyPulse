@@ -12,5 +12,6 @@ export const routes: Routes = [
     {path: 'contact',loadComponent: ()=> import('./pages/contact/contact.component')},
     {path: 'admin-dashboard',loadComponent: ()=> import('./pages/admin-dashboard/admin-dashboard.component')},
     {path: 'admin-users',loadComponent: ()=>import('./pages/users/users.component')},
+    {path: 'admin-contacts',loadComponent: ()=>import('./pages/admin-contacts/admin-contacts.component')},
    
 ];

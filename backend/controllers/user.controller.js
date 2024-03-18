@@ -54,20 +54,10 @@ export const createContact = async (req, res) => {
 
 export const getAllContacts = async (req, res) => {
   try {
-    const contacts = await ContactModel.find({});
-
-    res.status(200).json({
-      success: true,
-      message: "All contact details",
-      contacts,
-    });
+    const contacts = await ContactModel.find();
+    res.status(200).json(contacts);
   } catch (error) {
-    console.error("Error retrieving contact data:", error);
-    res.status(500).json({
-      success: false,
-      error: error.message,
-      message: "Error while retrieving contact details",
-    });
+    res.status(500).json({ message: error.message });
   }
 };
 
