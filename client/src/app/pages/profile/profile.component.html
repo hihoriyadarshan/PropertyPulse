@@ -9,3 +9,85 @@
 <div *ngIf="!userProfile">
   <p>Loading...</p>
 </div>
+
+<div className="container123">
+  <div className="container-11">
+    <img
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuaxuCl-tyOMjfTNy-jlX0xF-qKWybFP8AhA&usqp=CAU"
+      alt
+      className="img1"
+    />
+
+    <div className="container-21">
+      <form onSubmit="{handleSubmit}">
+        <div className="field-row">
+          <div className="input-icon">
+            <!-- <FaUser /> -->
+            <input
+              type="text"
+              value="{{ userProfile.username }}"
+              className="form-control"
+              id="exampleInputEmail1"
+              placeholder="Enter Your Name"
+              autoFocus
+            />
+          </div>
+        </div>
+        <div className="field-row">
+          <div className="input-icon">
+            <!-- <FaEnvelope /> -->
+            <input
+              type="email"
+              value="{{ userProfile.email }}"
+              className="form-control"
+              id="exampleInputEmail1"
+              placeholder="Enter Your Email "
+              disabled
+            />
+          </div>
+        </div>
+        <div className="field-row">
+          <div className="input-icon">
+            <!-- <FaKey /> -->
+            <input
+              type="password"
+              value=""
+              className="form-control"
+              id="exampleInputPassword1"
+              placeholder="Enter Your Password"
+            />
+          </div>
+        </div>
+        <div className="field-row">
+          <div className="input-icon">
+            <!-- <FaPhone /> -->
+            <input
+              type="text"
+              value="{phone}"
+              className="form-control"
+              id="exampleInputEmail1"
+              placeholder="Enter Your Phone"
+            />
+          </div>
+        </div>
+        <div className="field-row">
+          <div className="input-icon">
+            <!-- <FaMapMarker /> -->
+            <input
+              type="text"
+              value="{address}"
+              className="form-control"
+              id="exampleInputEmail1"
+              placeholder="Enter Your Address"
+            />
+          </div>
+        </div>
+        <div className="submit-btn">
+          <div className="button1">
+            <button type="submit" className="btn btn-primary">UPDATE</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

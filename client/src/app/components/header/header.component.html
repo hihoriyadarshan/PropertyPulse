@@ -8,10 +8,13 @@
     </h2>
   </a>
   <div class="navigation-links">
-    <span routerLink="/home" class="text-xl cursor-pointer font-bold m-3"
+    <span
+      routerLink="/home"
+      class="text-xl cursor-pointer font-bold m-3"
+      style="color: #2bc5d4"
       >Home</span
     >
-    <span routerLink="/about" class="text-xl cursor-pointer m-3"
+    <span routerLink="/about" class="text-xl cursor-pointer font-bold m-3"
       >About</span
     >
     <span
@@ -19,10 +22,12 @@
       class="text-xl cursor-pointer font-bold m-3 hover:text-indigo-200"
       >Property</span
     >
-    <span routerLink="/contact" class="cursor-pointer m-3">Contact</span>
+    <span routerLink="/contact" class="cursor-pointer font-bold m-3"
+      >Contact</span
+    >
     <ng-container *ngIf="!isLoggedIn">
       <span routerLink="/login" class="cursor-pointer m-3">Login</span>
-      <span routerLink="/register" class=" cursor-pointer m-3"
+      <span routerLink="/register" class="cursor-pointer m-3"
         >Registration</span
       >
     </ng-container>

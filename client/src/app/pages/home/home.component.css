@@ -1,0 +1,9 @@
+@media (max-width: 768px) {
+    .container-xxl {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+    .testimonial-carousel {
+      max-width: 100%;
+    }
+  }
