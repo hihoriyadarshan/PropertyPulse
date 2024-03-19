@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  getAllContacts,
   login,
   register,
   registerAdmin,
@@ -28,5 +29,9 @@ router.post("/reset-password", resetPassword);
 
 // profile update
 router.post("/profile-update/:id", updateProfile);
+
+
+// router.post("/createcontact", createContact);
+router.get("/contacts", getAllContacts);
 
 export default router;

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { usersUrls } from '../users.urls';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,7 +21,8 @@ export class UsersService {
 
 }
 
-  getAllContacts(): Observable<any[]> {
-    return this.http.get<any[]>(`${usersUrls.authServiceApi}contacts`);
+getAllUsers(): Observable<any[]> {
+  return this.http.get<any[]>(`${usersUrls.authServiceApi}getAllUsers`);
+  
 }
 }

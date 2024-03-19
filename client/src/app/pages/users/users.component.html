@@ -1,5 +1,23 @@
-<div *ngIf="users.length > 0">
-  <div *ngFor="let user of users">
-    <p>{{ user.firstName }} {{ user.lastName }}</p>
-  </div>
-</div>
+<!-- admin-contacts.component.html -->
+
+<h1>Admin Contacts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>phone</th>
+      <th>Profile image</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Iterate over contacts and display each contact -->
+    <tr *ngFor="let user of users">
+      <td>{{ user.username }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.phone }}</td>
+      <td>{{ user.profileImage }}</td>
+    </tr>
+  </tbody>
+</table>

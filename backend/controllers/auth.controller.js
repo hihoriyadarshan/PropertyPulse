@@ -7,6 +7,7 @@ import { CreateError } from "../utils/error.js";
 import nodemailer from "nodemailer";
 import UserToken from "../models/UserToken.js";
 import { response } from "express";
+import ContactModel from "../models/ContactModel.js";
 
 // user registration
 export const register = async (req, res, next) => {
@@ -208,3 +209,14 @@ const updateProfile = async (req, res) => {
 };
 
 export { updateProfile };
+
+//get all contact deatils(Admin)
+
+export const getAllContacts = async (req, res) => {
+  try {
+    const contacts = await ContactModel.find();
+    res.status(200).json(contacts);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

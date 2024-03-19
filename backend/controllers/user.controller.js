@@ -50,16 +50,7 @@ export const createContact = async (req, res) => {
   }
 };
 
-//get all contact deatils(Admin)
 
-export const getAllContacts = async (req, res) => {
-  try {
-    const contacts = await ContactModel.find();
-    res.status(200).json(contacts);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
 
 //delete contact
 export const deleteContactController = async (req, res) => {

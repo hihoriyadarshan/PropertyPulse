@@ -1,7 +1,7 @@
 import express from "express";
 import {
   createContact,
-  getAllContacts,
+  // getAllContacts,
   getAllUsers,
   getById,
 } from "../controllers/user.controller.js";
@@ -19,6 +19,6 @@ router.get("/:id", getById);
 router.post("/createcontact", createContact);
 
 //get All contact (Admin)
-router.get("/contacts", getAllContacts);
+// router.get("/contacts", getAllContacts);
 
 export default router;

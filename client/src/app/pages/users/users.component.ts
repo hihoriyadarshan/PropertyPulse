@@ -1,8 +1,7 @@
   import { CommonModule } from '@angular/common';
-  import { Component, OnInit } from '@angular/core';
-  import { HttpClient } from '@angular/common/http';
-  import { Observable } from 'rxjs';
-  import { of } from 'rxjs';
+  import { Component, OnInit} from '@angular/core';
+  import { UsersService } from '../../services/users.service';
+  
 
 
   @Component({
@@ -14,18 +13,22 @@
   })
   export default class UsersComponent implements OnInit {
     users: any[] = [];
-
-    constructor(private http: HttpClient) { }
+  
+    constructor(private usersService: UsersService) {}
   
     ngOnInit(): void {
-      this.http.get<any[]>('http://localhost:8800/api/user/getAllUsers').subscribe(
-        (res: any[]) => {
-          this.users = res;
-        },
-        error => {
-          console.error('Error fetching users:', error);
-        }
-      );
+      this.getAllUsers();
+    }
+  
+    getAllUsers(): void {
+      this.usersService.getAllUsers()
+        .subscribe(
+          (response: any[]) => {
+            this.users = response; // Assign response to users array
+          },
+          (error: any) => {
+            console.error('Error fetching users:', error);
+          }
+        );
     }
   }
-  

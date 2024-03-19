@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { apiUrls } from '../api.urls';
 import { BehaviorSubject } from 'rxjs';
-
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -38,4 +38,8 @@ export class AuthService {
   // isLoggedIn(){
     // return !!localStorage.getItem("user_id");
   // }
+
+  getAllContacts(): Observable<any[]> {
+    return this.http.get<any[]>(`${apiUrls.authServiceApi}contacts`);
+}
 }

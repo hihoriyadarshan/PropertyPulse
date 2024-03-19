@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from '../../services/users.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-admin-contacts',
@@ -12,14 +12,14 @@ import { UsersService } from '../../services/users.service';
 export default class AdminContactsComponent implements OnInit{
   contacts: any[] = [];
 
-  constructor(private userService: UsersService) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
     this.getAllContacts();
   }
 
   getAllContacts(): void {
-    this.userService.getAllContacts()
+    this.authService.getAllContacts()
       .subscribe(
         (response: any) => {
           this.contacts = response; // Assign response to contacts array
