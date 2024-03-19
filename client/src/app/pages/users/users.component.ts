@@ -11,6 +11,8 @@
     templateUrl: './users.component.html',
     styleUrl: './users.component.css'
   })
+  
+
   export default class UsersComponent implements OnInit {
     users: any[] = [];
   
@@ -23,8 +25,12 @@
     getAllUsers(): void {
       this.usersService.getAllUsers()
         .subscribe(
-          (response: any[]) => {
-            this.users = response; // Assign response to users array
+          (response: any) => {
+            if (response.status === 200 && Array.isArray(response.data)) {
+              this.users = response.data; // Assign array of users from response.data
+            } else {
+              console.error('Invalid response format:', response);
+            }
           },
           (error: any) => {
             console.error('Error fetching users:', error);
