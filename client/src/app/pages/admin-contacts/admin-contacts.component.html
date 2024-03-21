@@ -1,24 +1,49 @@
-<!-- admin-contacts.component.html -->
+<header role="banner">
+  <h1>Admin Panel</h1>
+  <ul class="utilities">
+    <br />
+    <li class="users"><a href="#">My Account</a></li>
+    <li class="logout warn">
+      <a routerLink="/">Log Out</a>
+    </li>
+  </ul>
+</header>
 
-<h1>Admin Contacts</h1>
+<nav role="navigation">
+  <ul class="main">
+    <li class="dashboard"><a href="/admin-dashboard">Dashboard</a></li>
+    <li class="users"><a routerLink="/admin-users">Manage Users</a></li>
+    <li class="comments"><a routerLink="/admin-contacts">Contact</a></li>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Subject</th>
-      <th>Message</th>
-    </tr>
-  </thead>
-  <tbody>
-    <!-- Iterate over contacts and display each contact -->
-    <tr *ngFor="let contact of contacts">
-      <td>{{ contact.name }}</td>
-      <td>{{ contact.email }}</td>
-      <td>{{ contact.subject }}</td>
-      <td>{{ contact.message }}</td>
-   
-    </tr>
-  </tbody>
-</table>
+    <li class="edit"><a href="#">Edit Website</a></li>
+    <li class="write"><a href="#">Write news</a></li>
+  </ul>
+</nav>
+
+<div class="Table-data">
+  <main role="main">
+    <div class="panel-important-title">Contact</div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Subject</th>
+          <th>Message</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Iterate over contacts and display each contact -->
+        <tr *ngFor="let contact of contacts">
+          <td>{{ contact.name }}</td>
+          <td>{{ contact.email }}</td>
+          <td>{{ contact.subject }}</td>
+          <td>{{ contact.message }}</td>
+          <td><button>Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+</div>

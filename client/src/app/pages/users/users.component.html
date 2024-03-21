@@ -1,26 +1,53 @@
-<!-- users.component.html -->
+<header role="banner">
+  <h1>Admin Panel</h1>
+  <ul class="utilities">
+    <br />
+    <li class="users"><a href="#">My Account</a></li>
+    <li class="logout warn">
+      <a routerLink="/">Log Out</a>
+    </li>
+  </ul>
+</header>
 
-<h1>Admin Users</h1>
+<nav role="navigation">
+  <ul class="main">
+    <li class="dashboard"><a href="/admin-dashboard">Dashboard</a></li>
+    <li class="users"><a routerLink="/admin-users">Manage Users</a></li>
+    <li class="comments"><a routerLink="/admin-contacts">Contact</a></li>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Phone</th>
-      <th>Profile Image</th>
-    </tr>
-  </thead>
-  <tbody>
-    <!-- Iterate over users and display each user -->
-    <tr *ngFor="let user of users">
-      <td>{{ user.name }}</td>
-      <td>{{ user.email }}</td>
-      <td>{{ user.phone }}</td>
-      <td>
-        <!-- Display the profile image using the <img> tag -->
-        <img [src]="user.profileImage" alt="Profile Image" style="max-width: 100px; max-height: 100px;">
-      </td>
-    </tr>
-  </tbody>
-</table>
+    <li class="edit"><a href="#">Edit Website</a></li>
+    <li class="write"><a href="#">Write news</a></li>
+  </ul>
+</nav>
+
+<div class="Table-data">
+  <main role="main">
+    <div class="panel-important-title">Users</div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Address</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Iterate over contacts and display each contact -->
+        <tr *ngFor="let user of users">
+          <td>{{ user.profileimage }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.phone }}</td>
+          <td>{{ user.address }}</td>
+          <td><button>Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+</div>
