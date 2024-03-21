@@ -1,23 +1,26 @@
-<!-- admin-contacts.component.html -->
+<!-- users.component.html -->
 
-<h1>Admin Contacts</h1>
+<h1>Admin Users</h1>
 
 <table>
   <thead>
     <tr>
       <th>Name</th>
       <th>Email</th>
-      <th>phone</th>
-      <th>Profile image</th>
+      <th>Phone</th>
+      <th>Profile Image</th>
     </tr>
   </thead>
   <tbody>
-    <!-- Iterate over contacts and display each contact -->
+    <!-- Iterate over users and display each user -->
     <tr *ngFor="let user of users">
-      <td>{{ user.username }}</td>
+      <td>{{ user.name }}</td>
       <td>{{ user.email }}</td>
       <td>{{ user.phone }}</td>
-      <td>{{ user.profileImage }}</td>
+      <td>
+        <!-- Display the profile image using the <img> tag -->
+        <img [src]="user.profileImage" alt="Profile Image" style="max-width: 100px; max-height: 100px;">
+      </td>
     </tr>
   </tbody>
 </table>

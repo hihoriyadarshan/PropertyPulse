@@ -1,93 +1,174 @@
-<div *ngIf="userProfile">
-  <h2>User Profile</h2>
-  <p>FirstName: {{ userProfile.firstName }}</p>
-  <p>LastName: {{ userProfile.lastName }}</p>
-  <p>email: {{ userProfile.email }}</p>
-  <p>UserName: {{ userProfile.username }}</p>
-</div>
-
-<div *ngIf="!userProfile">
-  <p>Loading...</p>
-</div>
-
-<div className="container123">
-  <div className="container-11">
-    <img
-      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuaxuCl-tyOMjfTNy-jlX0xF-qKWybFP8AhA&usqp=CAU"
-      alt
-      className="img1"
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile Update</title>
+    <!-- Bootstrap CSS -->
+    <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> -->
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
     />
+    <style>
+      * {
+        color: #06bbcc;
+      }
 
-    <div className="container-21">
-      <form onSubmit="{handleSubmit}">
-        <div className="field-row">
-          <div className="input-icon">
-            <!-- <FaUser /> -->
-            <input
-              type="text"
-              value="{{ userProfile.username }}"
-              className="form-control"
-              id="exampleInputEmail1"
-              placeholder="Enter Your Name"
-              autoFocus
-            />
-          </div>
+      body {
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+      .container123 {
+        margin-top: -40px;
+        margin-left: 0px;
+      }
+      .img1 {
+        width: 200px;
+        height: auto;
+        margin-bottom: 20px;
+      }
+
+      .field-row {
+        margin-bottom: 20px;
+        /* height: 2px; */
+      }
+      .form-control {
+        height: 38px;
+        border-radius: 5px;
+      }
+      .btn {
+        height: 40px;
+        width: 80px;
+        background-color: black;
+        color: #ffffff;
+        border-radius: 5px;
+      }
+      .border {
+        border-width: 100%;
+        background-color: black;
+        /* height: 20px; */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container123">
+      <div class="container-11">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuaxuCl-tyOMjfTNy-jlX0xF-qKWybFP8AhA&usqp=CAU"
+          alt="Profile Image"
+          class="img1"
+        />
+        <div class="container-21">
+          <form id="profileForm">
+            <div class="field-row">
+              <div class="input-icon">
+                <i class="fas fa-user"></i>
+                <!-- Username Icon -->
+                <input
+                  type="text"
+                  value="{{ userProfile.username }}"
+                  class="form-control"
+                  id="username"
+                  placeholder="Enter Your Name"
+                  disabled
+                />
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="input-icon">
+                <i class="fas fa-at"></i>
+                <!-- Email Icon -->
+                <input
+                  type="email"
+                  value="{{ userProfile.email }}"
+                  class="form-control"
+                  id="email"
+                  placeholder="Enter Your Email"
+                  disabled
+                />
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="input-icon">
+                <i class="fas fa-key"></i>
+                <!-- Password Icon -->
+                <input
+                  type="password"
+                  value="{{ userProfile.password }}"
+                  class="form-control"
+                  id="password"
+                  placeholder="Enter Your Password"
+                  disabled
+                />
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="input-icon">
+                <i class="fas fa-phone"></i>
+                <!-- Phone Icon -->
+                <input
+                  type="text"
+                  value="{{ userProfile.phone }}"
+                  class="form-control"
+                  id="phone"
+                  placeholder="Enter Your Phone"
+                  disabled
+                />
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="input-icon">
+                <i class="fas fa-map-marker-alt"></i>
+                <!-- Address Icon -->
+                <input
+                  type="text"
+                  value="{{ userProfile.address }}"
+                  class="form-control"
+                  id="address"
+                  placeholder="Enter Your Address"
+                  disabled
+                />
+              </div>
+            </div>
+            <div class="submit-btn">
+              <div class="button1">
+                <button routerLink="/profile-update" class="btn">UPDATE</button>
+              </div>
+            </div>
+          </form>
         </div>
-        <div className="field-row">
-          <div className="input-icon">
-            <!-- <FaEnvelope /> -->
-            <input
-              type="email"
-              value="{{ userProfile.email }}"
-              className="form-control"
-              id="exampleInputEmail1"
-              placeholder="Enter Your Email "
-              disabled
-            />
-          </div>
-        </div>
-        <div className="field-row">
-          <div className="input-icon">
-            <!-- <FaKey /> -->
-            <input
-              type="password"
-              value=""
-              className="form-control"
-              id="exampleInputPassword1"
-              placeholder="Enter Your Password"
-            />
-          </div>
-        </div>
-        <div className="field-row">
-          <div className="input-icon">
-            <!-- <FaPhone /> -->
-            <input
-              type="text"
-              value="{phone}"
-              className="form-control"
-              id="exampleInputEmail1"
-              placeholder="Enter Your Phone"
-            />
-          </div>
-        </div>
-        <div className="field-row">
-          <div className="input-icon">
-            <!-- <FaMapMarker /> -->
-            <input
-              type="text"
-              value="{address}"
-              className="form-control"
-              id="exampleInputEmail1"
-              placeholder="Enter Your Address"
-            />
-          </div>
-        </div>
-        <div className="submit-btn">
-          <div className="button1">
-            <button type="submit" className="btn btn-primary">UPDATE</button>
-          </div>
-        </div>
-      </form>
+      </div>
     </div>
-  </div>
-</div>
+
+    <!-- Bootstrap JS (optional if you require JavaScript functionality) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <script>
+      // JavaScript code to handle form submission
+      document
+        .getElementById("profileForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent default form submission
+
+          // Fetch form data
+          const username = document.getElementById("username").value;
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+          const phone = document.getElementById("phone").value;
+          const address = document.getElementById("address").value;
+
+          // You can perform further actions here, like sending the form data to the server using AJAX
+
+          // For now, let's log the form data to the console
+          console.log("Username:", username);
+          console.log("Email:", email);
+          console.log("Password:", password);
+          console.log("Phone:", phone);
+          console.log("Address:", address);
+        });
+    </script>
+  </body>
+</html>

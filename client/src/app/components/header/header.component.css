@@ -7,6 +7,8 @@ body{
 }  
 
 
+
+
 .navbar {
     display: flex;
     flex-wrap: wrap;
@@ -14,6 +16,8 @@ body{
     justify-content: space-between;
     padding: 0;
     height: 10vh;
+    border-bottom: 5px;
+    border-color: black;
 }
 
 .navbar-expand-lg {

@@ -13,5 +13,6 @@ export const routes: Routes = [
     {path: 'admin-dashboard',loadComponent: ()=> import('./pages/admin-dashboard/admin-dashboard.component')},
     {path: 'admin-users',loadComponent: ()=>import('./pages/users/users.component')},
     {path: 'admin-contacts',loadComponent: ()=>import('./pages/admin-contacts/admin-contacts.component')},
+    {path: 'profile-update',loadComponent: ()=>import('./pages/profileupdate/profileupdate.component')},
    
 ];
