@@ -16,5 +16,6 @@ export const routes: Routes = [
     {path: 'admin-contacts',loadComponent: ()=>import('./pages/admin-contacts/admin-contacts.component')},
     {path: 'profile-update',loadComponent: ()=>import('./pages/profileupdate/profileupdate.component')},
     {path: 'property',loadComponent: ()=>import('./pages/property/property.component')},
+    {path: 'create-property',loadComponent: ()=>import('./pages/create-property/create-property.component')},
    
 ];

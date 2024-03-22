@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import roleRoute from "./routes/role.js";
 import authRoute from "./routes/auth.js";
 import userRoute from "./routes/user.js";
+import propertyRoute from "./routes/propert.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
@@ -21,6 +22,7 @@ app.use(
 app.use("/api/role", roleRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/user", userRoute);
+app.use("/api/property", propertyRoute);
 
 // Response Handler Middlerware
 app.use((obj, req, res, next) => {
@@ -33,6 +35,7 @@ app.use((obj, req, res, next) => {
     data: obj.data,
   });
 });
+
 // Database Connection
 const connectMongoDB = async () => {
   try {
