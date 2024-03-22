@@ -4,10 +4,11 @@ const propertySchema = new mongoose.Schema(
   {
     user_id: [
       {
-        type: mongoose.ObjectId,
+        type: String,
         ref: "User",
       },
     ],
+   
     name: {
       type: String,
       required: true,

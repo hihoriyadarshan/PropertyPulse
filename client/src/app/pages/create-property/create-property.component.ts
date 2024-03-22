@@ -12,23 +12,22 @@ import { FormsModule,NgForm } from '@angular/forms';
   styleUrl: './create-property.component.css'
 })
 export default class CreatePropertyComponent {
-  user_id: string = '';
-  name: string = ''; 
-  address: string = ''; 
-  description: string = ''; 
-  type: string = ''; 
-  price: number = 0; 
-  sqft: number = 0; 
-  photo: File | null = null; 
-  latitude: string = ''; 
-  longitude: string = ''; 
+  user_id: string | null = localStorage.getItem('user_id'); // Retrieve user_id from localStorage
+  name: string = '';
+  address: string = '';
+  description: string = '';
+  type: string = '';
+  price: number = 0;
+  sqft: number = 0;
+  photo: File | null = null;
+  latitude: string = '';
+  longitude: string = '';
 
   constructor(private propertyService: PropertyService, private router: Router) { }
 
-  
   onSubmit(form: NgForm) {
     const formData = new FormData();
-    formData.append('user_id', this.user_id);
+    formData.append('user_id', this.user_id || '');
     formData.append('name', this.name);
     formData.append('address', this.address);
     formData.append('description', this.description);
@@ -42,13 +41,12 @@ export default class CreatePropertyComponent {
     formData.append('longitude', this.longitude);
 
     this.propertyService.createProperty(formData).subscribe(
-      (response) => {
+      (response: any) => {
         console.log('Property created successfully:', response);
-        this.router.navigate(['/create-property']); // Redirect to home page or wherever needed after successful submission
+        this.router.navigate(['/property']);
       },
       (error) => {
         console.error('Error occurred while creating property:', error);
-        // Handle error here, display error message to user or take appropriate action
       }
     );
   }

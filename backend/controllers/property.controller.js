@@ -13,6 +13,7 @@ export const createProperty = async (req, res) => {
     }
 
     const {
+      user_id,
       name,
       address,
       description,
@@ -26,6 +27,7 @@ export const createProperty = async (req, res) => {
 
     // Validation
     const requiredFields = [
+      "user_id",
       "name",
       "address",
       "description",
@@ -47,13 +49,17 @@ export const createProperty = async (req, res) => {
         .send({ error: "Photo is required and should be less than 1MB" });
     }
 
-    // Assuming you have access to the user ID in your request
-    const userId = req.userId; // Replace req.userId with how you access user ID from the request
-
     // Create a new property instance
     const property = new Property({
-      ...req.fields,
-      user_id: userId, // Assigning user ID to user_id field
+      user_id: user_id || req.userId, // Use req.userId if user_id is not provided in the request
+      name,
+      address,
+      description,
+      type,
+      price,
+      sqft,
+      latitude,
+      longitude,
       slug: slugify(name),
     });
 
