@@ -49,7 +49,7 @@ export default class LoginComponent {
       },
       error:(err)=>{
         console.log(err);
-        alert(err.error.message);
+        alert(err.error.message || "Username or password is invalid");
       }
     })
   }

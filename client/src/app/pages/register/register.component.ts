@@ -12,41 +12,40 @@ import { Router, RouterModule } from '@angular/router';
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
-export default class RegisterComponent implements OnInit{
+export default class RegisterComponent implements OnInit {
+  registerForm!: FormGroup;
 
-  fb = inject(FormBuilder);
-  authService = inject(AuthService)
-  router = inject(Router);
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
-
-  registerForm !: FormGroup;
   ngOnInit(): void {
     this.registerForm = this.fb.group({
       name: ['', Validators.required],
       phone: ['', Validators.required],
       email: ['', Validators.compose([Validators.required, Validators.email])],
-      username: ['', Validators.required], // Changed from 'Username' to 'username'
+      username: ['', Validators.required],
       address: ['', Validators.required],
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required],
-    },
-    {
+    }, {
       validator: confirmPasswordValidator('password', 'confirmPassword')
     });
   }
 
-register(){
-  this.authService.registerService(this.registerForm.value)
-  .subscribe({
-    next:(res)=>{
-      alert("User Created");
-      this.registerForm.reset();
-      this.router.navigate(['login'])
-    },
-    error:(err)=>{
-      console.log(err);
-    }
-  })
-}
-
+  register(): void {
+    this.authService.registerService(this.registerForm.value)
+      .subscribe({
+        next: (res) => {
+          alert("Your registration is successfully");
+          this.registerForm.reset();
+          this.router.navigate(['login']);
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
+  }
 }
