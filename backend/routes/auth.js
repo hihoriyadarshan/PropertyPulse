@@ -8,6 +8,7 @@ import {
   sendEmail,
   updateProfile,
 } from "../controllers/auth.controller.js";
+import { verifyAdmin, verifyUser } from "../utils/verifytoken.js";
 
 const router = express.Router();
 

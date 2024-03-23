@@ -1,5 +1,3 @@
-// property.controller.js
-
 import Property from "../models/Property.js";
 import slugify from "slugify";
 import fs from "fs";
@@ -49,9 +47,9 @@ export const createProperty = async (req, res) => {
         .send({ error: "Photo is required and should be less than 1MB" });
     }
 
-    // Create a new property instance
+  
     const property = new Property({
-      user_id: user_id || req.userId, // Use req.userId if user_id is not provided in the request
+      user_id: user_id || req.userId, 
       name,
       address,
       description,
@@ -88,3 +86,6 @@ export const createProperty = async (req, res) => {
     });
   }
 };
+
+
+//Get All property

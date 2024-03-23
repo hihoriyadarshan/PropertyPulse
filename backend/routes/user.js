@@ -10,7 +10,7 @@ const router = express.Router();
 
 //get all
 // router.get("/getAllUsers", verifyAdmin, getAllUsers);
-router.get("/getAllUsers", getAllUsers);
+router.get("/getAllUsers",getAllUsers);
 
 //get id
 router.get("/:id", getById);

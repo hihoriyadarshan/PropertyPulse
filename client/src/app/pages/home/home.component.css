@@ -11,3 +11,16 @@
 .footer-down{
   margin-bottom: -500px;
 }
+
+
+.btn-property{
+  height: 40px;
+  width: 40px;
+  background-color: aqua;
+}
+
+.Add-property{ 
+  margin-left: 161vh;
+  margin-bottom: 4px ;
+  color: aliceblue;
+}
