@@ -1,7 +1,9 @@
-// property.js
-
 import express from "express";
-import { createProperty } from "../controllers/property.controller.js";
+import {
+  createProperty,
+  findPropertiesByUserId,
+  getAllProperties,
+} from "../controllers/property.controller.js";
 import formidable from "express-formidable";
 
 const router = express.Router();
@@ -9,6 +11,13 @@ const router = express.Router();
 // Use formidable middleware to parse form data
 router.use(formidable());
 
+// create property
 router.post("/create_property", createProperty);
+
+//get user_id All peroperty
+router.get("/user_property/:id", findPropertiesByUserId);
+
+// Get All property
+router.get('/getAllproperty',getAllProperties);
 
 export default router;

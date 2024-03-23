@@ -11,11 +11,13 @@ export const routes: Routes = [
     {path: 'reset/:token',loadComponent: ()=> import('./pages/reset/reset.component')},
     {path: 'about',loadComponent: ()=> import('./pages/about/about.component')},
     {path: 'contact',loadComponent: ()=> import('./pages/contact/contact.component')},
-    {path: 'admin-dashboard',loadComponent: ()=> import('./pages/admin-dashboard/admin-dashboard.component')},
-    {path: 'admin-users',loadComponent: ()=>import('./pages/users/users.component')},
-    {path: 'admin-contacts',loadComponent: ()=>import('./pages/admin-contacts/admin-contacts.component')},
     {path: 'profile-update',loadComponent: ()=>import('./pages/profileupdate/profileupdate.component')},
     {path: 'property',loadComponent: ()=>import('./pages/property/property.component')},
     {path: 'create-property',loadComponent: ()=>import('./pages/create-property/create-property.component')},
-   
+    
+    
+    {path: 'admin-dashboard',loadComponent: ()=> import('./pages/admin-dashboard/admin-dashboard.component')},
+    {path: 'admin-users',loadComponent: ()=>import('./pages/users/users.component')},
+    {path: 'admin-contacts',loadComponent: ()=>import('./pages/admin-contacts/admin-contacts.component')},
+    {path: 'admin-property',loadComponent: ()=>import('./pages/admin-property/admin-property.component')},
 ];

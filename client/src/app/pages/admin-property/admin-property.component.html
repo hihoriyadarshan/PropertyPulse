@@ -1,0 +1,57 @@
+<header role="banner">
+  <h1>Admin Panel</h1>
+  <ul class="utilities">
+    <br />
+    <li class="users"><a href="#">My Account</a></li>
+    <li class="logout warn">
+      <a routerLink="/">Log Out</a>
+    </li>
+  </ul>
+</header>
+
+<nav role="navigation">
+  <ul class="main">
+    <li class="dashboard"><a href="/admin-dashboard">Dashboard</a></li>
+    <li class="users"><a routerLink="/admin-users">Manage Users</a></li>
+    <li class="write"><a routerLink="/admin-property">Property</a></li>
+    <li class="comments"><a routerLink="/admin-contacts">Contact</a></li>
+
+    <li class="edit"><a href="#">Edit Website</a></li>
+  </ul>
+</nav>
+
+<div class="Table-data">
+  <main role="main">
+    <div class="panel-important-title">All Property</div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Type</th>
+          <th>Squre feet</th>
+          <th>Price</th>
+          <th>Map Details(latitude-longitude)</th>
+          <th>Address</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Iterate over contacts and display each contact -->
+        <tr *ngFor="let property of property">
+          <td><img src="{{ property.photo }}" /></td>
+          <td>{{ property.name }}</td>
+          <td>{{ property.description }}</td>
+          <td>{{ property.type }}</td>
+          <td>{{ property.sqft }}</td>
+          <td>{{ property.price }}</td>
+          <td>{{ property.latitude }}-{{ property.longitude }}</td>
+          <td>{{ property.address }}</td>
+          <td><button>Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+</div>

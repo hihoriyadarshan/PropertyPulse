@@ -47,9 +47,8 @@ export const createProperty = async (req, res) => {
         .send({ error: "Photo is required and should be less than 1MB" });
     }
 
-  
     const property = new Property({
-      user_id: user_id || req.userId, 
+      user_id: user_id || req.userId,
       name,
       address,
       description,
@@ -87,5 +86,41 @@ export const createProperty = async (req, res) => {
   }
 };
 
+// Get property find by Id
+// Controller function to find properties by user_id
+export const findPropertiesByUserId = async (req, res) => {
+  const { id } = req.params; // Assuming 'id' is the parameter for user_id
 
-//Get All property
+  try {
+    const properties = await Property.find({ user_id: id });
+
+    if (!properties || properties.length === 0) {
+      return res
+        .status(404)
+        .json({ message: "No properties found for the provided user_id" });
+    }
+
+    res.status(200).json(properties);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+//  get All property
+export const getAllProperties = async (req, res) => {
+  try {
+    // Query all properties from the database
+    const properties = await Property.find();
+
+    // Check if there are no properties
+    if (!properties || properties.length === 0) {
+      return res.status(404).json({ message: "No properties found" });
+    }
+
+    // If properties exist, return them
+    res.status(200).json(properties);
+  } catch (error) {
+    // If an error occurs, return an error response
+    res.status(500).json({ message: error.message });
+  }
+};
