@@ -10,61 +10,8 @@ import { ActivatedRoute, Params } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './admin-property.component.html',
-  styleUrls: ['./admin-property.component.css'] // Use styleUrls instead of styleUrl
+  styleUrls: ['./admin-property.component.css'] 
 })
-
-// export default class AdminPropertyComponent implements OnInit {
-//   properties: any[] = [];
-//   propertyPhoto: any; // Declare propertyPhoto
-
-//   constructor(private propertyService: PropertyService, private route: ActivatedRoute) {}
-
-//   ngOnInit(): void {
-//     this.route.params.subscribe(params => {
-//       const id = params['id'];
-//       if (id) {
-//         this.getPropertyPhoto(id);
-//       }
-//     });
-
-//     this.getAllProperties();
-//   }
-
-//   getAllProperties(): void {
-//     this.propertyService.getAllProperties().subscribe(
-//       (response: any) => {
-//         this.properties = response;
-//         // Fetch photos for each property
-//         this.properties.forEach(property => {
-//           this.getPropertyPhoto(property._id);
-//         });
-//       },
-//       (error: any) => {
-//         console.error('Error fetching properties:', error);
-//       }
-//     );
-//   }
-
-//   getPropertyPhoto(id: string): void {
-//     this.propertyService.getPropertyPhoto(id).subscribe(photo => {
-//       // Find the property corresponding to the fetched photo
-//       const property = this.properties.find(p => p._id === id);
-//       if (property) {
-//         this.createImageFromBlob(photo, property);
-//       }
-//     });
-//   }
-
-//   createImageFromBlob(image: Blob, property: any): void {
-//     const reader = new FileReader();
-//     reader.addEventListener('load', () => {
-//       property.photo = reader.result;
-//     }, false);
-//     if (image) {
-//       reader.readAsDataURL(image);
-//     }
-//   }
-// }
 
 
 
