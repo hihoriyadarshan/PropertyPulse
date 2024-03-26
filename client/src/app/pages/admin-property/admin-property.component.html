@@ -15,8 +15,6 @@
     <li class="users"><a routerLink="/admin-users">Manage Users</a></li>
     <li class="write"><a routerLink="/admin-property">Property</a></li>
     <li class="comments"><a routerLink="/admin-contacts">Contact</a></li>
-
-    <li class="edit"><a href="#">Edit Website</a></li>
   </ul>
 </nav>
 
@@ -33,15 +31,19 @@
           <th>Type</th>
           <th>Squre feet</th>
           <th>Price</th>
-          <th>Map Details(latitude-longitude)</th>
+          <th>Map Details (latitude-longitude)</th>
           <th>Address</th>
           <th>Delete</th>
         </tr>
       </thead>
       <tbody>
-        <!-- Iterate over contacts and display each contact -->
-        <tr *ngFor="let property of property">
-          <td><img src="{{ property.photo }}" /></td>
+        <!-- Iterate over properties and display each property -->
+        <tr *ngFor="let property of properties">
+          <td>
+            <div *ngIf="propertyPhotoMap.get(property._id)">
+              <img [src]="propertyPhotoMap.get(property._id)" alt="Property Photo">
+          </div>
+          </td>
           <td>{{ property.name }}</td>
           <td>{{ property.description }}</td>
           <td>{{ property.type }}</td>

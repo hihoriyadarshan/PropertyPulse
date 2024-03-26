@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  PropertyPhotoController,
   createProperty,
   findPropertiesByUserId,
   getAllProperties,
@@ -11,6 +12,7 @@ const router = express.Router();
 // Use formidable middleware to parse form data
 router.use(formidable());
 
+
 // create property
 router.post("/create_property", createProperty);
 
@@ -18,6 +20,9 @@ router.post("/create_property", createProperty);
 router.get("/user_property/:id", findPropertiesByUserId);
 
 // Get All property
-router.get('/getAllproperty',getAllProperties);
+router.get("/getAllproperty", getAllProperties);
+
+// get property photo
+router.get("/:id", PropertyPhotoController);
 
 export default router;

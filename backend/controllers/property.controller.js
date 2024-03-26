@@ -124,3 +124,33 @@ export const getAllProperties = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+// Get All photo
+
+
+
+// get photo product id
+export const PropertyPhotoController = async (req, res) => {
+  try {
+    const property = await Property.findById(req.params.id).select("photo");
+
+    if (!property || !property.photo || !property.photo.data) {
+      return res.status(404).send({
+        success: false,
+        message: "Photo not found for the provided property ID",
+      });
+    }
+
+    res.set("Content-type", property.photo.contentType);
+    return res.status(200).send(property.photo.data);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({
+      success: false,
+      message: "Error while getting photo",
+      error: error.message,
+    });
+  }
+};
+
+

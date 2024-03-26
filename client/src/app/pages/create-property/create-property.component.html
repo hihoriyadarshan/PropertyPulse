@@ -1,9 +1,7 @@
 <h1>Add Property</h1>
 <form (ngSubmit)="onSubmit(form)" #form="ngForm">
-  <!-- Hidden Field for user_id -->
-  <input type="text" name="user_id" [value]="user_id || ''" />
+  <input type="hidden" name="user_id" [value]="user_id || ''" />
 
-  <!-- Other Fields -->
   <div class="form-group">
     <label for="name">Name:</label>
     <input
@@ -41,15 +39,23 @@
   </div>
 
   <div class="form-group">
-    <label for="type">Type:</label>
-    <input
-      type="text"
-      class="form-control"
-      id="type"
-      name="type"
-      required
-      [(ngModel)]="type"
-    />
+    <label for="type">Type:</label><br />
+    <label
+      ><input type="radio" name="type" value="commercial" [(ngModel)]="type" />
+      Commercial</label
+    ><br />
+    <label
+      ><input type="radio" name="type" value="residential" [(ngModel)]="type" />
+      Residential</label
+    ><br />
+    <label
+      ><input type="radio" name="type" value="industrial" [(ngModel)]="type" />
+      Industrial</label
+    ><br />
+    <label
+      ><input type="radio" name="type" value="land" [(ngModel)]="type" />
+      Land</label
+    ><br />
   </div>
 
   <div class="form-group">
@@ -89,24 +95,35 @@
   </div>
 
   <div class="form-group">
-    <label for="latitude">Latitude:</label>
-    <input
-      type="text"
-      class="form-control"
-      id="latitude"
-      name="latitude"
-      required
-      [(ngModel)]="latitude"
-    />
+    <label> Rent/Sell:</label><br />
+    <label
+      ><input
+        type="radio"
+        name="rentSell"
+        value="rent"
+        [(ngModel)]="latitude"
+      />
+      Rent</label
+    ><br />
+    <label
+      ><input
+        type="radio"
+        name="rentSell"
+        value="sell"
+        [(ngModel)]="latitude"
+      />
+      Sell</label
+    ><br />
   </div>
 
   <div class="form-group">
-    <label for="longitude">Longitude:</label>
+    <label for="longitude">Map-Details</label>
     <input
       type="text"
       class="form-control"
       id="longitude"
       name="longitude"
+      placeholder="latitude-longitude"
       required
       [(ngModel)]="longitude"
     />

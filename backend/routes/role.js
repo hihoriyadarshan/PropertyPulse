@@ -7,6 +7,7 @@ import {
 } from "../controllers/role.controller.js";
 import { verifyAdmin } from "../utils/verifytoken.js";
 
+
 const router = express.Router();
 
 // create a new role in Database

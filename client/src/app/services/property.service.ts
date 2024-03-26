@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { propertyUrls } from '../property.urls';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +11,34 @@ export class PropertyService {
 
   constructor(private http: HttpClient) { }
 
-  createProperty(propertyData: any) {
-    return this.http.post(propertyUrls.propertyServiceApi + 'create_property', propertyData);
+  createProperty(propertyData: any): Observable<any> {
+    return this.http.post<any>(propertyUrls.propertyServiceApi + 'create_property', propertyData);
   }
 
-  getAllproperty(): Observable<any[]> {
+  getAllProperties(): Observable<any[]> {
     return this.http.get<any[]>(`${propertyUrls.propertyServiceApi}getAllproperty`);
-}
+  }
 
+  getPropertyPhoto(id: string): Observable<Blob> {
+    return this.http.get(`${propertyUrls.propertyServiceApi}${id}`, { responseType: 'blob' })
+      .pipe(
+        catchError((error: any) => this.handleError(error))
+      );
+  }
+
+  private handleError(error: HttpErrorResponse): Observable<never> {
+    let errorMessage = 'Unknown error occurred';
+    if (error.error instanceof ErrorEvent) {
+      // Client-side error
+      errorMessage = `Error: ${error.error.message}`;
+    } else if (typeof window === 'undefined') {
+      // Server-side error
+      errorMessage = `Server-side error: ${error.message}`;
+    } else {
+      // Browser error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    console.error(errorMessage);
+    return throwError(errorMessage);
+  }
 }
