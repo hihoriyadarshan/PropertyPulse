@@ -14,6 +14,7 @@ export const getAllUsers = async (req, res, next) => {
   }
 };
 
+// user get by id (profile)
 export const getById = async (req, res, next) => {
   try {
     const user = await User.findById(req.params.id);
@@ -51,24 +52,5 @@ export const createContact = async (req, res) => {
 };
 
 
-
-//delete contact
-export const deleteContactController = async (req, res) => {
-  try {
-    const { id } = req.params;
-    await ContactModel.findByIdAndDelete(id);
-    res.status(200).send({
-      success: true,
-      message: "Contact Deleted Successfully",
-    });
-  } catch (error) {
-    console.log(error);
-    res.status(500).send({
-      success: false,
-      message: "Contact while deleting user",
-      error,
-    });
-  }
-};
 
 

@@ -2,6 +2,7 @@ import express from "express";
 import {
   PropertyPhotoController,
   createProperty,
+  deletepropertyController,
   findPropertiesByUserId,
   getAllProperties,
 } from "../controllers/property.controller.js";
@@ -24,5 +25,9 @@ router.get("/getAllproperty", getAllProperties);
 
 // get property photo
 router.get("/:id", PropertyPhotoController);
+
+// Delete property By Id
+router.delete("/deleteproperty/:id", deletepropertyController)
+
 
 export default router;

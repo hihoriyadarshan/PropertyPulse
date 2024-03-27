@@ -1,8 +1,8 @@
   import { CommonModule } from '@angular/common';
   import { Component, OnInit} from '@angular/core';
   import { UsersService } from '../../services/users.service';
-import { RouterModule } from '@angular/router';
-  
+  import { RouterModule } from '@angular/router';
+  import { AuthService } from '../../services/auth.service';
 
 
   @Component({
@@ -17,7 +17,7 @@ import { RouterModule } from '@angular/router';
   export default class UsersComponent implements OnInit {
     users: any[] = [];
   
-    constructor(private usersService: UsersService) {}
+    constructor(private usersService: UsersService,private authService: AuthService) {}
   
     ngOnInit(): void {
       this.getAllUsers();
@@ -37,5 +37,22 @@ import { RouterModule } from '@angular/router';
             console.error('Error fetching users:', error);
           }
         );
+    }
+
+
+    deleteUser(id: string): void {
+      if (confirm('Are you sure you want to delete this contact?')) {
+        this.authService.deleteuser(id)
+          .subscribe(
+            (response: any) => {
+              console.log('Contact deleted successfully:', response);
+              // Remove the deleted user from the users array
+              this.users = this.users.filter(user => user._id !== id);
+            },
+            (error: any) => {
+              console.error('Error deleting user:', error);
+            }
+          );
+      }
     }
   }

@@ -18,7 +18,6 @@ export default class PropertyComponent implements OnInit {
     properties: any[] = [];
     propertyPhotoMap: Map<string, string> = new Map(); // Use a map to store property photos
   
-
     
     constructor(private propertyService: PropertyService, private route: ActivatedRoute) {}
   
@@ -61,7 +60,6 @@ export default class PropertyComponent implements OnInit {
     createImageFromBlob(image: Blob, id: string): void {
       const reader = new FileReader();
       reader.addEventListener('load', () => {
-        // Assign base64 encoded image to propertyPhotoMap using property ID as key
         this.propertyPhotoMap.set(id, reader.result as string);
       }, false);
       if (image) {

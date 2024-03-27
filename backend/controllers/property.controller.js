@@ -125,8 +125,6 @@ export const getAllProperties = async (req, res) => {
   }
 };
 
-// Get All photo
-
 
 
 // get photo product id
@@ -154,3 +152,21 @@ export const PropertyPhotoController = async (req, res) => {
 };
 
 
+// Delete Property By Id
+export const deletepropertyController = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Property.findByIdAndDelete(id);
+    res.status(200).send({
+      success: true,
+      message: "Property Deleted Successfully",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Property not delete Internal server error",
+      error,
+    });
+  }
+};

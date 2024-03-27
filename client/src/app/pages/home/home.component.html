@@ -271,6 +271,7 @@
           data-wow-delay="0.1s"
         >
           <div class="Add-property">
+            <ng-container *ngIf="isLoggedIn">
             <div class="nav-item me-2">
               <a
                 class="btn btn-outline-primary"
@@ -279,6 +280,7 @@
                 >Add Property</a
               >
             </div>
+            </ng-container>
           </div>
         </div>
         <div class="row g-4 justify-content-center">

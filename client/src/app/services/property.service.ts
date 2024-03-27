@@ -41,4 +41,11 @@ export class PropertyService {
     console.error(errorMessage);
     return throwError(errorMessage);
   }
+
+
+  deleteproperty(propertyId: string): Observable<any> {
+    return this.http.delete<any>(`${propertyUrls.propertyServiceApi}deleteproperty/${propertyId}`);
+  }
+  
+
 }

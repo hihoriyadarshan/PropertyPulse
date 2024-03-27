@@ -67,4 +67,22 @@ export default class AdminPropertyComponent implements OnInit {
       reader.readAsDataURL(image);
     }
   }
+
+
+  deleteproperty(id: string): void {
+    if (confirm('Are you sure you want to delete this contact?')) {
+      this.propertyService.deleteproperty(id)
+        .subscribe(
+          (response: any) => {
+            console.log('Contact deleted successfully:', response);
+            // Remove the deleted contact from the contacts array
+            this.properties = this.properties.filter(properties => properties._id !== id);
+          },
+          (error: any) => {
+            console.error('Error deleting properties:', error);
+          }
+        );
+    }
+  }
+
 }

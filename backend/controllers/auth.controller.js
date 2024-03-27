@@ -8,6 +8,8 @@ import nodemailer from "nodemailer";
 import UserToken from "../models/UserToken.js";
 import { response } from "express";
 import ContactModel from "../models/ContactModel.js";
+import slugify from "slugify";
+import fs from "fs";
 
 // user registration
 export const register = async (req, res, next) => {
@@ -45,6 +47,8 @@ export const registerAdmin = async (req, res, next) => {
   await newUser.save();
   return next(CreateSuccess(200, "Admin Register Sucessfully"));
 };
+
+
 
 // login controller
 export const login = async (req, res, next) => {
@@ -210,6 +214,25 @@ const updateProfile = async (req, res) => {
 
 export { updateProfile };
 
+// Delete By ID user
+export const deleteuserController = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await User.findByIdAndDelete(id);
+    res.status(200).send({
+      success: true,
+      message: "User Deleted Successfully",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "User not delete Internal server error",
+      error,
+    });
+  }
+};
+
 //get all contact deatils(Admin)
 
 export const getAllContacts = async (req, res) => {
@@ -218,5 +241,24 @@ export const getAllContacts = async (req, res) => {
     res.status(200).json(contacts);
   } catch (error) {
     res.status(500).json({ message: error.message });
+  }
+};
+
+//delete contact id
+export const deleteContactController = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await ContactModel.findByIdAndDelete(id);
+    res.status(200).send({
+      success: true,
+      message: "Contact Deleted Successfully",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Contact while deleting user",
+      error,
+    });
   }
 };

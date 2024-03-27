@@ -41,7 +41,7 @@
           <td>{{ contact.email }}</td>
           <td>{{ contact.subject }}</td>
           <td>{{ contact.message }}</td>
-          <td><button>Delete</button></td>
+          <td><button (click)="deleteContact(contact._id)">Delete</button></td>
         </tr>
       </tbody>
     </table>
