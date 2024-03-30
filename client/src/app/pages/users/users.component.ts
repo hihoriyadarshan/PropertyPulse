@@ -28,7 +28,7 @@
         .subscribe(
           (response: any) => {
             if (response.status === 200 && Array.isArray(response.data)) {
-              this.users = response.data; // Assign array of users from response.data
+              this.users = response.data; 
             } else {
               console.error('Invalid response format:', response);
             }
@@ -46,7 +46,7 @@
           .subscribe(
             (response: any) => {
               console.log('Contact deleted successfully:', response);
-              // Remove the deleted user from the users array
+              
               this.users = this.users.filter(user => user._id !== id);
             },
             (error: any) => {

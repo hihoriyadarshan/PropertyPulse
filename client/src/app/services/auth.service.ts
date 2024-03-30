@@ -39,7 +39,7 @@ export class AuthService {
     // return !!localStorage.getItem("user_id");
   // }
 
-  getAllContacts(): Observable<any[]> {
+getAllContacts(): Observable<any[]> {
     return this.http.get<any[]>(`${apiUrls.authServiceApi}contacts`);
 }
 
@@ -50,5 +50,6 @@ deleteContact(contactId: string): Observable<any> {
 deleteuser(userId: string): Observable<any> {
   return this.http.delete<any>(`${apiUrls.authServiceApi}deleteuser/${userId}`);
 }
+
 
 }

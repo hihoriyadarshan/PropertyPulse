@@ -87,7 +87,6 @@ export const createProperty = async (req, res) => {
 };
 
 // Get property find by Id
-// Controller function to find properties by user_id
 export const findPropertiesByUserId = async (req, res) => {
   const { id } = req.params; // Assuming 'id' is the parameter for user_id
 
