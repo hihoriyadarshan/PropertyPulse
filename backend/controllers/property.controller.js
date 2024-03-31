@@ -86,7 +86,7 @@ export const createProperty = async (req, res) => {
   }
 };
 
-// Get property find by Id
+// Get property find by User Id
 export const findPropertiesByUserId = async (req, res) => {
   const { id } = req.params; // Assuming 'id' is the parameter for user_id
 
@@ -104,8 +104,6 @@ export const findPropertiesByUserId = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-
-
 
 //  get All property
 export const getAllProperties = async (req, res) => {
@@ -150,7 +148,7 @@ export const PropertyPhotoController = async (req, res) => {
   }
 };
 
-// Delete Property By Id
+// delete property
 export const deletepropertyController = async (req, res) => {
   try {
     const { id } = req.params;
@@ -166,5 +164,24 @@ export const deletepropertyController = async (req, res) => {
       message: "Property not delete Internal server error",
       error,
     });
+  }
+};
+
+
+// get Single property
+
+export const getPropertyById = async (req, res) => {
+  try {
+    const propertyId = req.params.id;
+    const property = await Property.findById(propertyId);
+
+    if (!property) {
+      return res.status(404).json({ message: 'Property not found' });
+    }
+
+    res.status(200).json(property);
+  } catch (error) {
+    console.error('Error finding property by ID:', error);
+    res.status(500).json({ message: 'Internal server error' });
   }
 };

@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse,HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { propertyUrls } from '../property.urls';
 import { Observable, throwError } from 'rxjs';
@@ -19,12 +19,35 @@ export class PropertyService {
     return this.http.get<any[]>(`${propertyUrls.propertyServiceApi}getAllproperty`);
   }
 
+  deleteproperty(propertyId: string): Observable<any> {
+    return this.http.delete<any>(`${propertyUrls.propertyServiceApi}deleteproperty/${propertyId}`);
+  }
+  
+  getUserPropertyById(userId: string): Observable<any> {
+    return this.http.get(`${propertyUrls.propertyServiceApi}user_property/${userId}`);   
+  }
+
+
+
   getPropertyPhoto(id: string): Observable<Blob> {
     return this.http.get(`${propertyUrls.propertyServiceApi}${id}`, { responseType: 'blob' })
       .pipe(
         catchError((error: any) => this.handleError(error))
       );
   }
+
+
+
+  getPropertyById(propertyId: string): Observable<any> {
+    return this.http.get<any>(`${propertyUrls.propertyServiceApi}getPropertyById/${propertyId}`)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+
+
+
 
   private handleError(error: HttpErrorResponse): Observable<never> {
     let errorMessage = 'Unknown error occurred';
@@ -43,12 +66,5 @@ export class PropertyService {
   }
 
 
-  deleteproperty(propertyId: string): Observable<any> {
-    return this.http.delete<any>(`${propertyUrls.propertyServiceApi}deleteproperty/${propertyId}`);
-  }
-  
-  getUserPropertyById(userId: string): Observable<any> {
-    return this.http.get(`${propertyUrls.propertyServiceApi}user_property/${userId}`);   
-  }
 
 }

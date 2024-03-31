@@ -15,6 +15,7 @@ export const routes: Routes = [
     {path: 'property',loadComponent: ()=>import('./pages/property/property.component')},
     {path: 'create-property',loadComponent: ()=>import('./pages/create-property/create-property.component')},
     {path: 'created-property-details',loadComponent: ()=>import('./pages/created-property-details/created-property-details.component')},
+    {path: 'more-property-details/:id',loadComponent: ()=>import('./pages/more-details-property/more-details-property.component')},
 
     
     

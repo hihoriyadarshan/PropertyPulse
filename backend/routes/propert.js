@@ -1,12 +1,13 @@
 import express from "express";
+import formidable from "express-formidable";
 import {
   PropertyPhotoController,
   createProperty,
   deletepropertyController,
   findPropertiesByUserId,
   getAllProperties,
+  getPropertyById,
 } from "../controllers/property.controller.js";
-import formidable from "express-formidable";
 
 const router = express.Router();
 
@@ -24,6 +25,9 @@ router.get("/getAllproperty", getAllProperties);
 
 // get property photo
 router.get("/:id", PropertyPhotoController);
+
+//  get Single property by Property Id
+router.get("/getPropertyById/:id",getPropertyById);
 
 // Delete property By Id
 router.delete("/deleteproperty/:id", deletepropertyController);

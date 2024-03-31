@@ -1,0 +1,21 @@
+<h1>Property Details</h1>
+<div *ngIf="propertyDetails">
+  <h2>{{ propertyDetails.name }}</h2>
+  <p><strong>Address:</strong> {{ propertyDetails.address }}</p>
+  <p><strong>Description:</strong> {{ propertyDetails.description }}</p>
+  <p><strong>Type:</strong> {{ propertyDetails.type }}</p>
+  <p><strong>Rent-sell</strong> {{ propertyDetails.latitude }}</p>
+
+  <p><strong>Square feet:</strong> {{ propertyDetails.sqft }}</p>
+
+  <p><strong>Price:</strong> {{ propertyDetails.price }}</p>
+  <p>
+    <strong>Map-details(latitude-longitude):</strong>
+    {{ propertyDetails.longitude }}
+  </p>
+
+  <!-- Add more details as needed -->
+</div>
+<div *ngIf="!propertyDetails">
+  <p>Loading...</p>
+</div>
