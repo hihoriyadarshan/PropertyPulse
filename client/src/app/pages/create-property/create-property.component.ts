@@ -38,7 +38,7 @@ export default class CreatePropertyComponent {
       formData.append('photo', this.photo, this.photo.name);
     }
     
-    formData.append('latitude', this.latitude);//This field is convert to Rent/sell
+    formData.append('latitude', this.latitude);
     formData.append('longitude', this.longitude);
 
     this.propertyService.createProperty(formData).subscribe(

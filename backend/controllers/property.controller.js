@@ -105,6 +105,8 @@ export const findPropertiesByUserId = async (req, res) => {
   }
 };
 
+
+
 //  get All property
 export const getAllProperties = async (req, res) => {
   try {
@@ -123,8 +125,6 @@ export const getAllProperties = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-
-
 
 // get photo product id
 export const PropertyPhotoController = async (req, res) => {
@@ -149,7 +149,6 @@ export const PropertyPhotoController = async (req, res) => {
     });
   }
 };
-
 
 // Delete Property By Id
 export const deletepropertyController = async (req, res) => {

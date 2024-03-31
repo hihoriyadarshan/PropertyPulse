@@ -17,14 +17,30 @@
     <span routerLink="/about" class="text-xl cursor-pointer font-bold m-3"
       >About</span
     >
-    <span
-      routerLink="/property"
-      class="text-xl cursor-pointer font-bold m-3 hover:text-indigo-200"
-      >Property</span
-    >
     <span routerLink="/contact" class="cursor-pointer font-bold m-3"
       >Contact</span
     >
+    <!-- <span
+      routerLink="/property"
+      class="text-xl cursor-pointer font-bold m-3 hover:text-indigo-200"
+      >Property</span
+    > -->
+
+    <div class="dropdown">
+      <span
+        routerLink="/property"
+        class="dropdown-toggle"
+        class="text-xl cursor-pointer font-bold m-3 hover:underline"
+        >Property</span
+      >
+      <ng-container *ngIf="isLoggedIn">
+        <div class="dropdown-menu">
+          <a routerLink="/create-property">Add Property</a>
+          <a routerLink="/created-property-details">view create Property </a>
+        </div>
+      </ng-container>
+    </div>
+
     <ng-container *ngIf="!isLoggedIn">
       <span routerLink="/login" class="cursor-pointer font-bold m-3"
         >Login</span

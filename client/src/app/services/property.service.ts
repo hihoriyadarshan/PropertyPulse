@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse,HttpClientModule } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { propertyUrls } from '../property.urls';
 import { Observable, throwError } from 'rxjs';
@@ -47,5 +47,8 @@ export class PropertyService {
     return this.http.delete<any>(`${propertyUrls.propertyServiceApi}deleteproperty/${propertyId}`);
   }
   
+  getUserPropertyById(userId: string): Observable<any> {
+    return this.http.get(`${propertyUrls.propertyServiceApi}user_property/${userId}`);   
+  }
 
 }

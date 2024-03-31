@@ -13,7 +13,6 @@ const router = express.Router();
 // Use formidable middleware to parse form data
 router.use(formidable());
 
-
 // create property
 router.post("/create_property", createProperty);
 
@@ -27,7 +26,6 @@ router.get("/getAllproperty", getAllProperties);
 router.get("/:id", PropertyPhotoController);
 
 // Delete property By Id
-router.delete("/deleteproperty/:id", deletepropertyController)
-
+router.delete("/deleteproperty/:id", deletepropertyController);
 
 export default router;
