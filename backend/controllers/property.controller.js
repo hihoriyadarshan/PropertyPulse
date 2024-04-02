@@ -169,7 +169,6 @@ export const deletepropertyController = async (req, res) => {
 
 
 // get Single property
-
 export const getPropertyById = async (req, res) => {
   try {
     const propertyId = req.params.id;

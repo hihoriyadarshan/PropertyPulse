@@ -48,8 +48,6 @@ export const registerAdmin = async (req, res, next) => {
   return next(CreateSuccess(200, "Admin Register Sucessfully"));
 };
 
-
-
 // login controller
 export const login = async (req, res, next) => {
   try {
@@ -262,3 +260,47 @@ export const deleteContactController = async (req, res) => {
     });
   }
 };
+
+// change Password
+
+export const changePassword = async (req, res, next) => {
+  try {
+    // Extract user id from request, assuming it's stored in req.userId after authentication
+    const userId = req.userId;
+
+    // Fetch user by id
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Compare current password with the password stored in the database
+    const isPasswordValid = await bcrypt.compare(
+      req.body.currentPassword,
+      user.password
+    );
+
+    if (!isPasswordValid) {
+      return res.status(401).json({ message: "Current password is incorrect" });
+    }
+
+    // Generate hash for new password
+    const salt = await bcrypt.genSalt(10);
+    const hashNewPassword = await bcrypt.hash(req.body.newPassword, salt);
+
+    // Update user's password with the new hashed password
+    user.password = hashNewPassword;
+
+    // Save the updated user
+    await user.save();
+
+    return res.status(200).json({ message: "Password updated successfully" });
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ message: "Internal server error", error: error.message });
+  }
+};
+
+

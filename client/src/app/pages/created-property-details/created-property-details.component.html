@@ -1,14 +1,24 @@
-<div
-  class="property-details"
-  *ngIf="userProperties && userProperties.length > 0"
->
-  <h2>Property Details</h2>
-  <div *ngFor="let property of userProperties" class="property-info">
-    <p><strong>Name:</strong> {{ property?.name }}</p>
-    <p><strong>Address:</strong> {{ property?.address }}</p>
-    <p><strong>Description:</strong> {{ property?.description }}</p>
-    <p><strong>Type:</strong> {{ property?.type }}</p>
-    <p><strong>Price:</strong> ${{ property?.price }}</p>
-    <p><strong>Sqft:</strong> {{ property?.sqft }}</p>
+<h2 class="header">View Your Property</h2>
+
+<div class="property-container">
+  <div *ngFor="let property of userProperties" class="property-card">
+    <div class="property-info">
+      <div *ngIf="propertyPhotoMap.get(property._id)" class="property-image">
+        <img [src]="propertyPhotoMap.get(property._id)" alt="Property Photo" />
+      </div>
+
+      <div class="details">
+        <p><strong>Owner Name:</strong> {{ property.name }}</p>
+        <p><strong>Address:</strong> {{ property.address }}</p>
+        <p><strong>Description:</strong> {{ property.description }}</p>
+        <p><strong>Type:</strong> {{ property.type }}</p>
+        <p><strong>Price:</strong> ${{ property.price }}</p>
+        <p><strong>Sqft:</strong> {{ property.sqft }}</p>
+        <p><strong>Rent-sell:</strong> {{ property.latitude }}</p>
+        <p><strong>G-Map Location:</strong> {{ property.longitude }}</p>
+      </div>
+    </div>
   </div>
 </div>
+
+<script src="script.js"></script>

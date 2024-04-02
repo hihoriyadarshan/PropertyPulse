@@ -1,21 +1,43 @@
-<h1>Property Details</h1>
-<div *ngIf="propertyDetails">
-  <h2>{{ propertyDetails.name }}</h2>
-  <p><strong>Address:</strong> {{ propertyDetails.address }}</p>
-  <p><strong>Description:</strong> {{ propertyDetails.description }}</p>
-  <p><strong>Type:</strong> {{ propertyDetails.type }}</p>
-  <p><strong>Rent-sell</strong> {{ propertyDetails.latitude }}</p>
+    <div class="container">
+      <h1>Property Details</h1>
+      <div *ngIf="propertyDetails" class="mt-4">
+        <div class="row">
+          <div class="col-md-6">
+            <div *ngIf="propertyPhotoMap.get(propertyDetails._id)">
+              <img
+                [src]="propertyPhotoMap.get(propertyDetails._id)"
+                alt="Property Photo"
+                class="img-fluid"
+              />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <p><strong>Owner Name:</strong>{{ propertyDetails.name }}</p>
+            <p><strong>Address:</strong> {{ propertyDetails.address }}</p>
+            <p>
+              <strong>Description:</strong> {{ propertyDetails.description }}
+            </p>
+            <p><strong>Type:</strong> {{ propertyDetails.type }}</p>
+            <p><strong>Rent-sell:</strong> {{ propertyDetails.latitude }}</p>
+            <p><strong>Square feet:</strong> {{ propertyDetails.sqft }}</p>
+            <p><strong>Price:</strong> {{ propertyDetails.price }}</p>
+            <p>
+              <strong>Map-details(latitude-longitude):</strong>
+              {{ propertyDetails.longitude }}
+            </p>
+            <!-- Add more details as needed -->
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!propertyDetails" class="mt-4">
+        <p>Loading...</p>
+      </div>
+    </div>
 
-  <p><strong>Square feet:</strong> {{ propertyDetails.sqft }}</p>
-
-  <p><strong>Price:</strong> {{ propertyDetails.price }}</p>
-  <p>
-    <strong>Map-details(latitude-longitude):</strong>
-    {{ propertyDetails.longitude }}
-  </p>
-
-  <!-- Add more details as needed -->
-</div>
-<div *ngIf="!propertyDetails">
-  <p>Loading...</p>
-</div>
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Angular JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <!-- Custom JavaScript -->

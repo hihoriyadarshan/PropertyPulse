@@ -49,7 +49,7 @@
       }
       .form-inner h2 {
         font-size: 25px;
-        color: #d7a3d7;
+        color: #ffffff;
         text-align: center;
         padding-top: 35px;
       }
@@ -62,7 +62,7 @@
         margin-top: 20px;
         border: 1.5px solid rgb(109, 87, 121);
         outline: none;
-        background: #19052c;
+        background: #181d38;
         color: white;
       }
 
@@ -277,7 +277,7 @@
           <input
             formControlName="phone"
             class="input"
-            type="text"
+            type="number"
             placeholder="phone"
           />
           <span
@@ -286,8 +286,20 @@
               registerForm.controls['phone'].dirty
             "
             class="text-red-500"
-            >*phone is required</span
+            >*phone number is required</span
           >
+
+          <span
+          *ngIf="
+            registerForm.get('phone')?.hasError('pattern') &&
+            registerForm.get('phone')?.dirty
+          "
+          class="text-red-500"
+        >
+          * Phone number must be 10 digits long
+        </span>
+
+
           <input
             formControlName="address"
             class="input"
@@ -316,7 +328,28 @@
             "
             class="text-red-500"
             >*Password name is required</span
-          ><input
+          >
+
+          <span
+            *ngIf="
+              registerForm.get('password')?.hasError('minlength') &&
+              registerForm.get('password')?.dirty
+            "
+            class="text-red-500"
+          >
+            * Password must be at least 8 characters long
+          </span>
+          <span
+            *ngIf="
+              registerForm.get('password')?.hasError('pattern') &&
+              registerForm.get('password')?.dirty
+            "
+            class="text-red-500"
+          >
+            * Password must contain at least 1 number and 1 special character
+          </span>
+
+          <input
             formControlName="confirmPassword"
             class="input"
             type="password"

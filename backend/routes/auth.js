@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  changePassword,
   deleteContactController,
   deleteuserController,
   getAllContacts,
@@ -33,15 +34,16 @@ router.post("/reset-password", resetPassword);
 // profile update
 router.post("/profile-update/:id", updateProfile);
 
-
 // router.post("/createcontact", createContact);
 router.get("/contacts", getAllContacts);
 
 // User Delete by Id
-router.delete("/deleteuser/:id", deleteuserController)
+router.delete("/deleteuser/:id", deleteuserController);
 
 // delete contact by Id
-router.delete("/deletecontact/:id", deleteContactController)
+router.delete("/deletecontact/:id", deleteContactController);
 
+// change password
+router.post("/change-password", changePassword);
 
 export default router;
