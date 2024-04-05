@@ -23,4 +23,7 @@ export const routes: Routes = [
     {path: 'admin-users',loadComponent: ()=>import('./pages/users/users.component')},
     {path: 'admin-contacts',loadComponent: ()=>import('./pages/admin-contacts/admin-contacts.component')},
     {path: 'admin-property',loadComponent: ()=>import('./pages/admin-property/admin-property.component')},
+    {path: 'create-category',loadComponent: ()=>import('./pages/create-category/create-category.component')},
+    {path: 'create-sub-category',loadComponent: ()=>import('./pages/create-sub-category/create-sub-category.component')},
+    
 ];

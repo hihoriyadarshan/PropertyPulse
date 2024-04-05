@@ -5,6 +5,7 @@ import { PropertyService } from '../../services/property.service';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 
+
 @Component({
   selector: 'app-created-property-details',
   standalone: true,

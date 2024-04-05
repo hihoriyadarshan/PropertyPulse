@@ -150,6 +150,9 @@
             </div>
           </div>
         </form>
+        <div *ngIf="successMessage" class="alert alert-success mt-3" role="alert">
+          {{ successMessage }}
+        </div>
       </div>
     </div>
   </div>
