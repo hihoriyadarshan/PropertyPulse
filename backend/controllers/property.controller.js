@@ -20,6 +20,7 @@ export const createProperty = async (req, res) => {
       sqft,
       latitude,
       longitude,
+      category,
     } = req.fields;
     const { photo } = req.files;
 
@@ -34,6 +35,7 @@ export const createProperty = async (req, res) => {
       "sqft",
       "latitude",
       "longitude",
+      "category",
     ];
     for (const field of requiredFields) {
       if (!req.fields[field]) {
@@ -57,6 +59,7 @@ export const createProperty = async (req, res) => {
       sqft,
       latitude,
       longitude,
+      category,
       slug: slugify(name),
     });
 

@@ -35,41 +35,8 @@ export const createCategoryController = async (req, res) => {
   }
 };
 
-//create sub- category
+// create sub-category
 
-// export const createSubCategoryController = async (req, res) => {
-//   try {
-//     const { s_name, category } = req.body;
-
-//     // Check if required fields are present
-//     if (!s_name || !category) {
-//       return res.status(400).json({ error: "Name and category are required" });
-//     }
-
-//     // Check if the specified category exists (you may need to validate this further)
-//     const existingCategory = await categoryModel.findById(category);
-//     if (!existingCategory) {
-//       return res.status(400).json({ error: "Category not found" });
-//     }
-
-//     const subCategory = new subCategoryModel({
-//       s_name,
-//       category,
-//       slug: slugify(s_name),
-//     });
-
-//     await subCategory.save();
-
-//     res
-//       .status(201)
-//       .json({ message: "Sub-category created successfully", subCategory });
-//   } catch (error) {
-//     console.error("Sub-category creation error:", error);
-//     res
-//       .status(500)
-//       .json({ error: "An error occurred while creating the sub-category" });
-//   }
-// };
 export const createSubCategoryController = async (req, res) => {
   try {
     const { s_name, category } = req.body;

@@ -12,6 +12,7 @@
       required
       [(ngModel)]="name"
     />
+    
   </div>
 
   <div class="form-group">
@@ -127,6 +128,32 @@
       required
       [(ngModel)]="longitude"
     />
+  </div>
+
+  <div class="form-group">
+    <label for="category">Category:</label>
+    <select
+      class="form-control"
+      id="category"
+      [(ngModel)]="category"
+      name="category"
+      required
+      #categoryField="ngModel"
+    >
+      <option value="" disabled selected>Select a category</option>
+      <!-- Populate options dynamically from backend -->
+      <option *ngFor="let cat of categories" [value]="cat._id">
+        {{ cat.name }}
+      </option>
+    </select>
+    <div
+      *ngIf="
+        categoryField.invalid && (categoryField.dirty || categoryField.touched)
+      "
+      class="text-danger"
+    >
+      Category is required.
+    </div>
   </div>
 
   <button type="submit" class="btn btn-primary">Submit</button>

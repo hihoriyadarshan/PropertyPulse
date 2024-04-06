@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { PropertyService } from '../../services/property.service';
 import { FormsModule,NgForm } from '@angular/forms';
+import { CategoryService } from '../../services/category.service';
 
 @Component({
   selector: 'app-create-property',
@@ -11,7 +12,10 @@ import { FormsModule,NgForm } from '@angular/forms';
   templateUrl: './create-property.component.html',
   styleUrl: './create-property.component.css'
 })
-export default class CreatePropertyComponent {
+export default class CreatePropertyComponent implements OnInit {
+  category: string = '';
+  categories: any[] = [];
+
   user_id: string | null = localStorage.getItem('user_id'); // Retrieve user_id from localStorage
   name: string = '';
   address: string = '';
@@ -23,7 +27,22 @@ export default class CreatePropertyComponent {
   latitude: string = '';
   longitude: string = '';
 
-  constructor(private propertyService: PropertyService, private router: Router) { }
+  constructor(private propertyService: PropertyService, private router: Router,private categoryService: CategoryService) { }
+  ngOnInit(): void {
+    // Fetch categories from backend when component initializes
+    this.fetchCategories();
+  }
+
+  fetchCategories() {
+    this.categoryService.fetchCategories().subscribe(
+      (response: any) => {
+        this.categories = response.categories;
+      },
+      (error: any) => {
+        console.error('Error fetching categories:', error);
+      }
+    );
+  }
 
   onSubmit(form: NgForm) {
     const formData = new FormData();
@@ -40,6 +59,8 @@ export default class CreatePropertyComponent {
     
     formData.append('latitude', this.latitude);
     formData.append('longitude', this.longitude);
+    formData.append('category', this.category);
+
 
     this.propertyService.createProperty(formData).subscribe(
       (response: any) => {
