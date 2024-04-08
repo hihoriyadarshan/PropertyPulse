@@ -1,165 +1,211 @@
-<h1>Add Property</h1>
-<form (ngSubmit)="onSubmit(form)" #form="ngForm">
-  <input type="hidden" name="user_id" [value]="user_id || ''" />
+<div class="bg">
+  <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+    <div class="header">Add Property</div>
+    <input type="hidden" name="user_id" [value]="user_id || ''" />
 
-  <div class="form-group">
-    <label for="name">Name:</label>
-    <input
-      type="text"
-      class="form-control"
-      id="name"
-      name="name"
-      required
-      [(ngModel)]="name"
-    />
-    
-  </div>
-
-  <div class="form-group">
-    <label for="address">Address:</label>
-    <input
-      type="text"
-      class="form-control"
-      id="address"
-      name="address"
-      required
-      [(ngModel)]="address"
-    />
-  </div>
-
-  <div class="form-group">
-    <label for="description">Description:</label>
-    <textarea
-      class="form-control"
-      id="description"
-      name="description"
-      rows="3"
-      required
-      [(ngModel)]="description"
-    ></textarea>
-  </div>
-
-  <div class="form-group">
-    <label for="type">Type:</label><br />
-    <label
-      ><input type="radio" name="type" value="commercial" [(ngModel)]="type" />
-      Commercial</label
-    ><br />
-    <label
-      ><input type="radio" name="type" value="residential" [(ngModel)]="type" />
-      Residential</label
-    ><br />
-    <label
-      ><input type="radio" name="type" value="industrial" [(ngModel)]="type" />
-      Industrial</label
-    ><br />
-    <label
-      ><input type="radio" name="type" value="land" [(ngModel)]="type" />
-      Land</label
-    ><br />
-  </div>
-
-  <div class="form-group">
-    <label for="price">Price:</label>
-    <input
-      type="number"
-      class="form-control"
-      id="price"
-      name="price"
-      required
-      [(ngModel)]="price"
-    />
-  </div>
-
-  <div class="form-group">
-    <label for="sqft">Sqft:</label>
-    <input
-      type="number"
-      class="form-control"
-      id="sqft"
-      name="sqft"
-      required
-      [(ngModel)]="sqft"
-    />
-  </div>
-
-  <div class="form-group">
-    <label for="photo">Photo:</label>
-    <input
-      type="file"
-      class="form-control-file"
-      id="photo"
-      name="photo"
-      accept="image/*"
-      (change)="onFileSelected($event)"
-    />
-  </div>
-
-  <div class="form-group">
-    <label> Rent/Sell:</label><br />
-    <label
-      ><input
-        type="radio"
-        name="rentSell"
-        value="rent"
-        [(ngModel)]="latitude"
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        name="name"
+        required
+        [(ngModel)]="name"
       />
-      Rent</label
-    ><br />
-    <label
-      ><input
-        type="radio"
-        name="rentSell"
-        value="sell"
-        [(ngModel)]="latitude"
-      />
-      Sell</label
-    ><br />
-  </div>
-
-  <div class="form-group">
-    <label for="longitude">Map-Details</label>
-    <input
-      type="text"
-      class="form-control"
-      id="longitude"
-      name="longitude"
-      placeholder="latitude-longitude"
-      required
-      [(ngModel)]="longitude"
-    />
-  </div>
-
-  <div class="form-group">
-    <label for="category">Category:</label>
-    <select
-      class="form-control"
-      id="category"
-      [(ngModel)]="category"
-      name="category"
-      required
-      #categoryField="ngModel"
-    >
-      <option value="" disabled selected>Select a category</option>
-      <!-- Populate options dynamically from backend -->
-      <option *ngFor="let cat of categories" [value]="cat._id">
-        {{ cat.name }}
-      </option>
-    </select>
-    <div
-      *ngIf="
-        categoryField.invalid && (categoryField.dirty || categoryField.touched)
-      "
-      class="text-danger"
-    >
-      Category is required.
     </div>
-  </div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+    <div class="form-group">
+      <label for="address">Address:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="address"
+        name="address"
+        required
+        [(ngModel)]="address"
+      />
+    </div>
 
-<!-- Bootstrap JS (optional) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea
+        class="form-control"
+        id="description"
+        name="description"
+        rows="3"
+        required
+        [(ngModel)]="description"
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="type">Type:</label><br />
+      <label
+        ><input
+          type="radio"
+          name="type"
+          value="commercial"
+          [(ngModel)]="type"
+        />
+        Commercial</label
+      ><br />
+      <label
+        ><input
+          type="radio"
+          name="type"
+          value="residential"
+          [(ngModel)]="type"
+        />
+        Residential</label
+      ><br />
+      <label
+        ><input
+          type="radio"
+          name="type"
+          value="industrial"
+          [(ngModel)]="type"
+        />
+        Industrial</label
+      ><br />
+      <label
+        ><input type="radio" name="type" value="land" [(ngModel)]="type" />
+        Land</label
+      ><br />
+    </div>
+
+    <div class="form-group">
+      <label for="price">Price:</label>
+      <input
+        type="number"
+        class="form-control"
+        id="price"
+        name="price"
+        required
+        [(ngModel)]="price"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="sqft">Sqft:</label>
+      <input
+        type="number"
+        class="form-control"
+        id="sqft"
+        name="sqft"
+        required
+        [(ngModel)]="sqft"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="photo">Photo:</label>
+      <input
+        type="file"
+        class="form-control-file"
+        id="photo"
+        name="photo"
+        accept="image/*"
+        (change)="onFileSelected($event)"
+      />
+    </div>
+
+    <div class="form-group">
+      <label> Rent/Sell:</label><br />
+      <label
+        ><input
+          type="radio"
+          name="rentSell"
+          value="rent"
+          [(ngModel)]="latitude"
+        />
+        Rent</label
+      ><br />
+      <label
+        ><input
+          type="radio"
+          name="rentSell"
+          value="sell"
+          [(ngModel)]="latitude"
+        />
+        Sell</label
+      ><br />
+    </div>
+
+    <div class="form-group">
+      <label for="longitude">Map-Details</label>
+      <input
+        type="text"
+        class="form-control"
+        id="longitude"
+        name="longitude"
+        placeholder="latitude-longitude"
+        required
+        [(ngModel)]="longitude"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="category">Category:</label>
+      <select
+        class="form-control"
+        id="category"
+        [(ngModel)]="category"
+        name="category"
+        required
+        #categoryField="ngModel"
+      >
+        <option value="" disabled selected>Select a category</option>
+        <!-- Populate options dynamically from backend -->
+        <option *ngFor="let cat of categories" [value]="cat._id">
+          {{ cat.name }}
+        </option>
+      </select>
+      <div
+        *ngIf="
+          categoryField.invalid &&
+          (categoryField.dirty || categoryField.touched)
+        "
+        class="text-danger"
+      >
+        Category is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="subcategory">SubCategory:</label>
+      <select
+        class="form-control"
+        id="subcategory"
+        [(ngModel)]="subcategory"
+        name="subcategory"
+        required
+        #subcategoryField="ngModel"
+      >
+        <option value="" disabled selected>Select a subcategory</option>
+        <option
+          *ngFor="let subcategory of subcategories"
+          [value]="subcategory._id"
+        >
+          {{ subcategory.s_name }}
+        </option>
+      </select>
+      <div
+        *ngIf="
+          subcategoryField.invalid &&
+          (subcategoryField.dirty || subcategoryField.touched)
+        "
+        class="text-danger"
+      >
+        Subcategory is required.
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  <!-- Bootstrap JS (optional) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</div>

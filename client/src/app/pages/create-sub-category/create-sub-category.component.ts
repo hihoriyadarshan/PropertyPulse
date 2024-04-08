@@ -15,12 +15,14 @@ export default class CreateSubCategoryComponent implements OnInit {
   subCategoryName: string = '';
   category: string = '';
   categories: any[] = [];
+  subcategory: any[] = [];
 
   constructor(private categoryService: CategoryService) { }
 
   ngOnInit(): void {
     // Fetch categories from backend when component initializes
     this.fetchCategories();
+    this.getAllSubCategory();
   }
 
   // Fetch categories from backend
@@ -56,4 +58,42 @@ export default class CreateSubCategoryComponent implements OnInit {
       }
     );
   }
+
+
+  getAllSubCategory(): void {
+    this.categoryService.getAllSubCategory()
+      .subscribe(
+        (response: any) => {
+          if (response.status === 200 && Array.isArray(response.data)) {
+            this.subcategory = response.data; 
+          } else {
+            console.error('Invalid response format:', response);
+          }
+        },
+        (error: any) => {
+          console.error('Error fetching category:', error);
+        }
+      );
+  }
+
+
+  deleteSubCategory(id: string): void {
+    if (confirm('Are you sure you want to delete this SubCategory?')) {
+      this.categoryService.deleteSubCategory(id)
+        .subscribe(
+          (response: any) => {
+            console.log('Contact deleted successfully:', response);
+            
+            this.subcategory = this.subcategory.filter(subcategory => subcategory._id !== id);
+          },
+          (error: any) => {
+            console.error('Error deleting user:', error);
+          }
+        );
+    }
+  }
+
+
+
+
 }

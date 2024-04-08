@@ -21,8 +21,10 @@ export class UsersService {
 
 }
 
+
+
 getAllUsers(): Observable<any[]> {
   return this.http.get<any[]>(`${usersUrls.authServiceApi}getAllUsers`);
-  
-}
+  }
+
 }

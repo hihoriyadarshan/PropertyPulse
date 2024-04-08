@@ -70,7 +70,7 @@ export default class AdminPropertyComponent implements OnInit {
 
 
   deleteproperty(id: string): void {
-    if (confirm('Are you sure you want to delete this contact?')) {
+    if (confirm('Are you sure you want to delete this Property?')) {
       this.propertyService.deleteproperty(id)
         .subscribe(
           (response: any) => {

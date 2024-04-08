@@ -24,7 +24,7 @@ export default class ContactComponent {
       email: ['', [Validators.required, Validators.email]],
       subject: ['', Validators.required],
       message: ['', Validators.required]
-    });
+    });     
   }
 
   submitForm() {

@@ -42,5 +42,26 @@
         />
       </div>
     </form>
+
+
+    <table>
+      <thead>
+        <tr>
+       
+          <th>Name</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Iterate over contacts and display each contact -->
+        <tr *ngFor="let category of category">
+          <td>{{ category.name }}</td>   
+         
+          <td><button (click)="deleteCategory(category._id)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
   </section>
+
+  
 </main>

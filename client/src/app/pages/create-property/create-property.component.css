@@ -1,4 +1,34 @@
-/* Apply basic styling to form */
+/* Center the form container */
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.header{
+  font-size: 30px;
+  font-weight: 500;
+  color: black;
+  margin-left: 190px;
+  /* background: #2bc5d4; */
+}
+
+
+.form-container h1 {
+  margin-bottom: 20px; 
+  color: #333; 
+}
+
+
+form {
+  padding: 20px;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+}
+
+
+
 form {
     max-width: 600px;
     margin: 0 auto;
@@ -6,40 +36,43 @@ form {
     background-color: #f8f9fa;
     border: 1px solid #dee2e6;
     border-radius: 5px;
+    margin-top: 30px;
+    margin-bottom: 30px;
   }
   
-  /* Apply some space between form groups */
+ 
   .form-group {
     margin-bottom: 20px;
+
   }
   
-  /* Style the labels */
+
   label {
     font-weight: bold;
   }
   
-  /* Style the radio buttons to appear inline */
+ 
   input[type="radio"] {
     margin-right: 5px;
   }
   
-  /* Style the submit button */
+
   .btn-primary {
     width: 100%;
   }
   
-  /* Optional: Adjust the width of the file input */
+  
   .form-control-file {
     width: auto;
   }
   
-  /* Optional: Add some space between radio buttons */
+ 
   .form-group label {
     margin-right: 10px;
   }
   
 
-  /* Horizontal Form Styles */
+
 .horizontal-form .form-group {
     margin-bottom: 1rem;
   }

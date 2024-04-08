@@ -177,40 +177,7 @@ export const resetPassword = (req, res, next) => {
   });
 };
 
-// profile update
-// Profile update controller
-const updateProfile = async (req, res) => {
-  const { id } = req.params; // Destructure 'id' from request params
 
-  try {
-    // Find the user by id
-    const user = await User.findById(id);
-
-    if (!user) {
-      return res.status(404).json({ message: "User not found" });
-    }
-
-    // Update user profile based on request body
-    user.firstName = req.body.firstName;
-    user.lastName = req.body.lastName;
-    user.username = req.body.username;
-    user.email = req.body.email;
-
-    // Make sure to update all necessary fields accordingly
-
-    // Save the updated user
-    await user.save();
-
-    return res
-      .status(200)
-      .json({ message: "Profile updated successfully", user });
-  } catch (error) {
-    console.error("Error updating profile:", error);
-    return res.status(500).json({ message: "Internal server error" });
-  }
-};
-
-export { updateProfile };
 
 // Delete By ID user
 export const deleteuserController = async (req, res) => {
@@ -304,3 +271,37 @@ export const changePassword = async (req, res, next) => {
 };
 
 
+
+// Profile update controller
+export const updateProfile = async (req, res) => {
+  const { id } = req.params; // Destructure 'id' from request params
+
+  try {
+    // Find the user by id
+    const user = await User.findById(id);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Update user profile based on request body
+    user.firstName = req.body.firstName;
+    user.lastName = req.body.lastName;
+    user.username = req.body.username;
+    user.email = req.body.email;
+
+    // Make sure to update all necessary fields accordingly
+
+    // Save the updated user
+    await user.save();
+
+    return res
+      .status(200)
+      .json({ message: "Profile updated successfully", user });
+  } catch (error) {
+    console.error("Error updating profile:", error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+ 

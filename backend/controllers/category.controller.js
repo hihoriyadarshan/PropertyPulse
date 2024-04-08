@@ -1,5 +1,7 @@
 import categoryModel from "../models/categoryModel.js";
 import subCategoryModel from "../models/sub-categoryModel.js";
+import { CreateError } from "../utils/error.js";
+import { CreateSuccess } from "../utils/success.js";
 import slugify from "slugify";
 
 // create property
@@ -34,6 +36,7 @@ export const createCategoryController = async (req, res) => {
     });
   }
 };
+
 
 // create sub-category
 
@@ -92,5 +95,88 @@ export const fetchCategoriesController = async (req, res) => {
     res
       .status(500)
       .json({ error: "An error occurred while fetching categories" });
+  }
+};
+
+// featch sub-category 
+export const fetchSubCategoriesController = async (req, res) => {
+  try {
+    const categories = await subCategoryModel.find();
+    res.status(200).json({ categories });
+  } catch (error) {
+    console.error("Error fetching subcategories:", error);
+    res
+      .status(500)
+      .json({ error: "An error occurred while fetching categories" });
+  }
+};
+
+
+// Get All category
+
+export const getAllCategory = async (req, res, next) => {
+  try {
+    const category = await categoryModel.find();
+    return res.status(200).json(CreateSuccess(200, "Category", category));
+    
+  } catch (error) {
+    return res.status(500).json(CreateError(500, "Internal Server Error!!"));
+   
+  }
+};
+
+// Get All sub-category
+
+export const getAllsubCategory = async (req, res, next) => {
+  try {
+    const subCategory = await subCategoryModel.find();
+    return res.status(200).json(CreateSuccess(200, "All Users", subCategory));
+    
+  } catch (error) {
+    return res.status(500).json(CreateError(500, "Internal Server Error!!"));
+
+  }
+};
+
+
+// delete Category by Id
+
+export const deleteCategoryController = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await categoryModel.findByIdAndDelete(id);
+    res.status(200).send({
+      success: true,
+      message: "Category Deleted Successfully",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Category while deleting user",
+      error,
+    });
+  }
+};
+
+
+
+// delete SubCategory by Id
+
+export const deleteSubCategoryController = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await subCategoryModel.findByIdAndDelete(id);
+    res.status(200).send({
+      success: true,
+      message: "SubCategory Deleted Successfully",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "SubCategory while deleting user",
+      error,
+    });
   }
 };

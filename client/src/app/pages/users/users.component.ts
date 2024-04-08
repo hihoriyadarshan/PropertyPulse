@@ -41,7 +41,7 @@
 
 
     deleteUser(id: string): void {
-      if (confirm('Are you sure you want to delete this contact?')) {
+      if (confirm('Are you sure you want to delete this User?')) {
         this.authService.deleteuser(id)
           .subscribe(
             (response: any) => {

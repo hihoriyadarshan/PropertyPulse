@@ -1,4 +1,5 @@
 import Property from "../models/Property.js";
+import FeedbackModel from "../models/FeedbakModel.js";
 import slugify from "slugify";
 import fs from "fs";
 
@@ -21,6 +22,7 @@ export const createProperty = async (req, res) => {
       latitude,
       longitude,
       category,
+      subcategory,
     } = req.fields;
     const { photo } = req.files;
 
@@ -36,6 +38,7 @@ export const createProperty = async (req, res) => {
       "latitude",
       "longitude",
       "category",
+      "subcategory",
     ];
     for (const field of requiredFields) {
       if (!req.fields[field]) {
@@ -43,10 +46,10 @@ export const createProperty = async (req, res) => {
       }
     }
 
-    if (photo && photo.size > 1000000) {
+    if (photo && photo.size > 10000000) {
       return res
         .status(400)
-        .send({ error: "Photo is required and should be less than 1MB" });
+        .send({ error: "Photo is required and should be less than 10MB" });
     }
 
     const property = new Property({
@@ -60,19 +63,18 @@ export const createProperty = async (req, res) => {
       latitude,
       longitude,
       category,
+      subcategory,
       slug: slugify(name),
     });
 
-    // Save photo data if available
+   
     if (photo) {
       property.photo.data = fs.readFileSync(photo.path);
       property.photo.contentType = photo.type;
     }
 
-    // Save property to the database
     await property.save();
 
-    // Respond with success message and the created property
     res.status(201).send({
       success: true,
       message: "Property Created Successfully",
@@ -91,7 +93,7 @@ export const createProperty = async (req, res) => {
 
 // Get property find by User Id
 export const findPropertiesByUserId = async (req, res) => {
-  const { id } = req.params; // Assuming 'id' is the parameter for user_id
+  const { id } = req.params; 
 
   try {
     const properties = await Property.find({ user_id: id });
@@ -111,21 +113,17 @@ export const findPropertiesByUserId = async (req, res) => {
 //  get All property
 export const getAllProperties = async (req, res) => {
   try {
-    // Query all properties from the database
     const properties = await Property.find();
-
-    // Check if there are no properties
     if (!properties || properties.length === 0) {
       return res.status(404).json({ message: "No properties found" });
     }
-
-    // If properties exist, return them
     res.status(200).json(properties);
   } catch (error) {
-    // If an error occurs, return an error response
+    
     res.status(500).json({ message: error.message });
   }
 };
+
 
 // get photo product id
 export const PropertyPhotoController = async (req, res) => {
@@ -171,6 +169,25 @@ export const deletepropertyController = async (req, res) => {
 };
 
 
+// Count Property
+export const PropertyCountController = async (req, res) => {
+  try {
+    const total = await Property.find({}).estimatedDocumentCount();
+    res.status(200).send({
+      success: true,
+      total,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({
+      message: "Error in Feedback count",
+      error,
+      success: false,
+    });
+  }
+};
+
+
 // get Single property
 export const getPropertyById = async (req, res) => {
   try {
@@ -178,16 +195,14 @@ export const getPropertyById = async (req, res) => {
     const property = await Property.findById(propertyId);
 
     if (!property) {
-      return res.status(404).json({ message: 'Property not found' });
+      return res.status(404).json({ message: "Property not found" });
     }
 
     res.status(200).json(property);
   } catch (error) {
-    console.error('Error finding property by ID:', error);
-    res.status(500).json({ message: 'Internal server error' });
+    console.error("Error finding property by ID:", error);
+    res.status(500).json({ message: "Internal server error" });
   }
 };
-
-
 
 

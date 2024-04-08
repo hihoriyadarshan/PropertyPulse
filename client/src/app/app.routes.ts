@@ -16,6 +16,7 @@ export const routes: Routes = [
     {path: 'create-property',loadComponent: ()=>import('./pages/create-property/create-property.component')},
     {path: 'created-property-details',loadComponent: ()=>import('./pages/created-property-details/created-property-details.component')},
     {path: 'more-property-details/:id',loadComponent: ()=>import('./pages/more-details-property/more-details-property.component')},
+    {path: 'create-feedback',loadComponent: ()=>import('./pages/feedback/feedback.component')},
 
     
     
@@ -25,5 +26,7 @@ export const routes: Routes = [
     {path: 'admin-property',loadComponent: ()=>import('./pages/admin-property/admin-property.component')},
     {path: 'create-category',loadComponent: ()=>import('./pages/create-category/create-category.component')},
     {path: 'create-sub-category',loadComponent: ()=>import('./pages/create-sub-category/create-sub-category.component')},
+    {path: 'admin-feedback',loadComponent: ()=>import('./pages/admin-feedback/admin-feedback.component')},
+    {path: 'admin-profile',loadComponent: ()=>import('./pages/admin-profile/admin-profile.component')},
     
 ];

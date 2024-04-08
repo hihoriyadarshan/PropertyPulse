@@ -21,50 +21,85 @@
 </nav>
 
 <main role="main">
-    <section class="panel important">
-      <h2>Create a Sub-category</h2>
-      <form (submit)="createSubCategory()" #subCategoryForm="ngForm" novalidate>
+  <section class="panel important">
+    <h2>Create a Sub-category</h2>
+    <form (submit)="createSubCategory()" #subCategoryForm="ngForm" novalidate>
+      <div class="form-group">
         <div class="form-group">
-          <div class="form-group">
-            <label for="category">Category:</label>
-            <select
-              class="form-control"
-              id="category"
-              [(ngModel)]="category"
-              name="category"
-              required
-              #categoryField="ngModel"
-            >
-              <option value="" disabled selected>Select a category</option>
-              <!-- Populate options dynamically from backend -->
-              <option *ngFor="let cat of categories" [value]="cat._id">
-                {{ cat.name }}
-              </option>
-            </select>
-            <div *ngIf="categoryField.invalid && (categoryField.dirty || categoryField.touched)" class="text-danger">
-              Category is required.
-            </div>
-          </div>
-  
-          <label for="s_name">Sub-category Name:</label>
-          <input
-            type="text"
+          <label for="category">Category:</label>
+          <select
             class="form-control"
-            id="s_name"
-            [(ngModel)]="subCategoryName"
-            name="s_name"
+            id="category"
+            [(ngModel)]="category"
+            name="category"
             required
-            #subCategoryNameField="ngModel"
-          />
-          <div *ngIf="subCategoryNameField.invalid && (subCategoryNameField.dirty || subCategoryNameField.touched)" class="text-danger">
-            Sub-category name is required.
+            #categoryField="ngModel"
+          >
+            <option value="" disabled selected>Select a category</option>
+            <!-- Populate options dynamically from backend -->
+            <option *ngFor="let cat of categories" [value]="cat._id">
+              {{ cat.name }}
+            </option>
+          </select>
+          <div
+            *ngIf="
+              categoryField.invalid &&
+              (categoryField.dirty || categoryField.touched)
+            "
+            class="text-danger"
+          >
+            Category is required.
           </div>
         </div>
-  
-        <div class="btn-h">
-          <button type="submit" class="btn btn-primary" [disabled]="subCategoryForm.invalid">Create Sub-category</button>
+
+        <label for="s_name">Sub-category Name:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="s_name"
+          [(ngModel)]="subCategoryName"
+          name="s_name"
+          required
+          #subCategoryNameField="ngModel"
+        />
+        <div
+          *ngIf="
+            subCategoryNameField.invalid &&
+            (subCategoryNameField.dirty || subCategoryNameField.touched)
+          "
+          class="text-danger"
+        >
+          Sub-category name is required.
         </div>
-      </form>
-    </section>
-  </main>
-  
+      </div>
+
+      <div class="btn-h">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="subCategoryForm.invalid"
+        >
+          Create Sub-category
+        </button>
+      </div>
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Iterate over contacts and display each contact -->
+        <tr *ngFor="let subcategory of subcategory">
+          <td>{{ subcategory.s_name }}</td>
+          
+
+
+          <td><button (click)="deleteSubCategory(subcategory._id)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</main>

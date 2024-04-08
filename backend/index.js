@@ -6,6 +6,7 @@ import authRoute from "./routes/auth.js";
 import userRoute from "./routes/user.js";
 import categoryRoute from "./routes/category.js";
 import propertyRoute from "./routes/propert.js";
+import feedbackRoute from "./routes/feedback.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
@@ -25,6 +26,7 @@ app.use("/api/auth", authRoute);
 app.use("/api/user", userRoute);
 app.use("/api/category", categoryRoute);
 app.use("/api/property", propertyRoute);
+app.use("/api/feedback", feedbackRoute);
 
 // Response Handler Middlerware
 app.use((obj, req, res, next) => {

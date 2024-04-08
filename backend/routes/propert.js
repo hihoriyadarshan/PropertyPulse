@@ -32,4 +32,7 @@ router.get("/getPropertyById/:id",getPropertyById);
 // Delete property By Id
 router.delete("/deleteproperty/:id", deletepropertyController);
 
+
+
+
 export default router;

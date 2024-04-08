@@ -14,7 +14,10 @@ import { CategoryService } from '../../services/category.service';
 })
 export default class CreatePropertyComponent implements OnInit {
   category: string = '';
+  subcategory: string = '';
+
   categories: any[] = [];
+  subcategories: any[] = [];  
 
   user_id: string | null = localStorage.getItem('user_id'); // Retrieve user_id from localStorage
   name: string = '';
@@ -31,6 +34,8 @@ export default class CreatePropertyComponent implements OnInit {
   ngOnInit(): void {
     // Fetch categories from backend when component initializes
     this.fetchCategories();
+    this.fetchSubCategories();
+
   }
 
   fetchCategories() {
@@ -40,6 +45,17 @@ export default class CreatePropertyComponent implements OnInit {
       },
       (error: any) => {
         console.error('Error fetching categories:', error);
+      }
+    );
+  }
+
+  fetchSubCategories() {
+    this.categoryService.fetchSubCategories().subscribe(
+      (response: any) => {
+        this.subcategories = response.categories;
+      },
+      (error: any) => {
+        console.error('Error fetching subcategories:', error);
       }
     );
   }
@@ -60,7 +76,7 @@ export default class CreatePropertyComponent implements OnInit {
     formData.append('latitude', this.latitude);
     formData.append('longitude', this.longitude);
     formData.append('category', this.category);
-
+    formData.append('subcategory', this.subcategory);
 
     this.propertyService.createProperty(formData).subscribe(
       (response: any) => {
