@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import roleRoute from "./routes/role.js";
 import authRoute from "./routes/auth.js";
 import userRoute from "./routes/user.js";
+import inquiryRoute from "./routes/inquiry.js";
 import categoryRoute from "./routes/category.js";
 import propertyRoute from "./routes/propert.js";
 import feedbackRoute from "./routes/feedback.js";
@@ -26,6 +27,7 @@ app.use("/api/auth", authRoute);
 app.use("/api/user", userRoute);
 app.use("/api/category", categoryRoute);
 app.use("/api/property", propertyRoute);
+app.use("/api/inquiry", inquiryRoute);
 app.use("/api/feedback", feedbackRoute);
 
 // Response Handler Middlerware
