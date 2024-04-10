@@ -78,5 +78,4 @@ deleteSubCategory(subcategoryId: string): Observable<any> {
   return this.http.delete<any>(`${categoryUrls.categoryServiceApi}deletesubcategory/${subcategoryId}`);
 }
 
-
 }

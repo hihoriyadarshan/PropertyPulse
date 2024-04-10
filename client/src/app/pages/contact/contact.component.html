@@ -93,7 +93,7 @@
 
       <!-- Rest of your HTML content -->
       <div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
-        <form [formGroup]="contactForm" (ngSubmit)="submitForm()">
+        <form [formGroup]="contactForm" (ngSubmit)="submitForm()" novalidate>
           <div class="row g-3">
             <div class="col-md-6">
               <div class="form-floating">
@@ -103,8 +103,12 @@
                   id="name"
                   placeholder="Your Name"
                   formControlName="name"
-                required="true"/>
+                  required
+                />
                 <label for="name">Your Name</label>
+                <div *ngIf="contactForm.get('name')?.invalid && (contactForm.get('name')?.dirty || contactForm.get('name')?.touched)" class="text-danger">
+                  Name is required
+                </div>
               </div>
             </div>
             <div class="col-md-6">
@@ -115,8 +119,13 @@
                   id="email"
                   placeholder="Your Email"
                   formControlName="email"
+                  required
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                 />
                 <label for="email">Your Email</label>
+                <div *ngIf="contactForm.get('email')?.invalid && (contactForm.get('email')?.dirty || contactForm.get('email')?.touched)" class="text-danger">
+                  Valid email is required
+                </div>
               </div>
             </div>
             <div class="col-12">
@@ -127,8 +136,12 @@
                   id="subject"
                   placeholder="Subject"
                   formControlName="subject"
+                  required
                 />
                 <label for="subject">Subject</label>
+                <div *ngIf="contactForm.get('subject')?.invalid && (contactForm.get('subject')?.dirty || contactForm.get('subject')?.touched)" class="text-danger">
+                  Subject is required
+                </div>
               </div>
             </div>
             <div class="col-12">
@@ -139,17 +152,23 @@
                   id="message"
                   style="height: 150px"
                   formControlName="message"
+                  required
                 ></textarea>
                 <label for="message">Message</label>
+                <div *ngIf="contactForm.get('message')?.invalid && (contactForm.get('message')?.dirty || contactForm.get('message')?.touched)" class="text-danger">
+                  Message is required
+                </div>
               </div>
             </div>
             <div class="col-12">
-              <button type="submit" class="btn btn-primary w-100 py-3">
+              <button type="submit" class="btn btn-primary w-100 py-3" [disabled]="contactForm.invalid">
                 Send Message
               </button>
             </div>
           </div>
         </form>
+        
+        
         <div *ngIf="successMessage" class="alert alert-success mt-3" role="alert">
           {{ successMessage }}
         </div>

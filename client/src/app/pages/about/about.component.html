@@ -293,7 +293,7 @@
 </div>
 <!-- Team End -->
 
-<!-- Feeback Start -->
+<!-- Feedback Start -->
 
 <div class="container-xxl py-5">
   <div class="container">
@@ -366,52 +366,119 @@
         <form [formGroup]="contactForm" (ngSubmit)="submitForm()">
           <div class="row g-3">
             <div class="col-md-6">
-              <div class="form-floating">
+              <div
+                class="form-floating"
+                [ngClass]="{
+                  'has-error':
+                    contactForm.get('name')?.invalid &&
+                    contactForm.get('name')?.touched
+                }"
+              >
                 <input
                   type="text"
                   class="form-control"
                   id="name"
                   placeholder="Your Name"
                   formControlName="name"
-                  required="true"
+                  required
                 />
                 <label for="name">Your Name</label>
+                <div
+                  *ngIf="
+                    contactForm.get('name')?.invalid &&
+                    contactForm.get('name')?.touched
+                  "
+                  class="text-danger"
+                >
+                  Name is required
+                </div>
               </div>
             </div>
             <div class="col-md-6">
-              <div class="form-floating">
+              <div
+                class="form-floating"
+                [ngClass]="{
+                  'has-error':
+                    contactForm.get('email')?.invalid &&
+                    contactForm.get('email')?.touched
+                }"
+              >
                 <input
                   type="email"
                   class="form-control"
                   id="email"
                   placeholder="Your Email"
                   formControlName="email"
+                  required
                 />
                 <label for="email">Your Email</label>
+                <div
+                  *ngIf="
+                    contactForm.get('email')?.invalid &&
+                    contactForm.get('email')?.touched
+                  "
+                  class="text-danger"
+                >
+                  Please enter a valid email address
+                </div>
               </div>
             </div>
             <div class="col-12">
-              <div class="form-floating">
+              <div
+                class="form-floating"
+                [ngClass]="{
+                  'has-error':
+                    contactForm.get('subject')?.invalid &&
+                    contactForm.get('subject')?.touched
+                }"
+              >
                 <input
                   type="text"
                   class="form-control"
                   id="subject"
                   placeholder="Subject"
                   formControlName="subject"
+                  required
                 />
                 <label for="subject">Subject</label>
+                <div
+                  *ngIf="
+                    contactForm.get('subject')?.invalid &&
+                    contactForm.get('subject')?.touched
+                  "
+                  class="text-danger"
+                >
+                  Subject is required
+                </div>
               </div>
             </div>
             <div class="col-12">
-              <div class="form-floating">
+              <div
+                class="form-floating"
+                [ngClass]="{
+                  'has-error':
+                    contactForm.get('message')?.invalid &&
+                    contactForm.get('message')?.touched
+                }"
+              >
                 <textarea
                   class="form-control"
                   placeholder="Leave a message here"
                   id="message"
                   style="height: 150px"
                   formControlName="message"
+                  required
                 ></textarea>
                 <label for="message">Message</label>
+                <div
+                  *ngIf="
+                    contactForm.get('message')?.invalid &&
+                    contactForm.get('message')?.touched
+                  "
+                  class="text-danger"
+                >
+                  Message is required
+                </div>
               </div>
             </div>
             <div class="col-12">
@@ -421,6 +488,7 @@
             </div>
           </div>
         </form>
+        <!-- Success Message -->
         <div
           *ngIf="successMessage"
           class="alert alert-success mt-3"
@@ -432,7 +500,7 @@
     </div>
   </div>
 </div>
-<!-- Contact End -->
+<!-- Feedback End -->
 
 <!-- Footer Start -->
 <div

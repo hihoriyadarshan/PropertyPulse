@@ -40,7 +40,11 @@ export default class FeedbackComponent {
         }
       );
     } else {
-      // Handle form validation error
+      const isFormEmpty = Object.keys(this.contactForm.value).every(key => !this.contactForm.value[key]);
+    if (isFormEmpty) {
+      alert('Please fill in all required fields.');
+    } else {
     }
+  }
   }
 }

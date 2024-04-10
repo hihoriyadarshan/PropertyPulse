@@ -33,9 +33,7 @@ export default class AboutComponent {
       this.feedbackService.createfeedback(this.contactForm.value).subscribe(
         (response: any) => {
           console.log('Feedback created successfully:', response);
-          // Set success message
-          this.successMessage = 'Your feedback is sent successfully.';
-          // Reset form after successful submission
+          this.successMessage = 'Your feedback sent successfully.';
           this.contactForm.reset();
         },
         (error: any) => {
@@ -43,7 +41,12 @@ export default class AboutComponent {
         }
       );
     } else {
-      // Handle form validation error
+      const isFormEmpty = Object.keys(this.contactForm.value).every(key => !this.contactForm.value[key]);
+    if (isFormEmpty) {
+      alert('Please fill in all required fields.');
+    } else {
+      // Handle form validation error if needed
     }
+  }
   }
 }

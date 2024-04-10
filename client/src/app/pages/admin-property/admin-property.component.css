@@ -454,69 +454,83 @@ td {
 
 /* Table Styling */
 table {
-    border-collapse: collapse;
-    width: 100%; /* Ensure the table takes up full width of its container */
-  }
-  
-  th, td {
-    border: 1px solid #ddd; /* Add borders to table cells */
-    padding: 8px; /* Add padding to table cells */
-    text-align: left; /* Align text to left within cells */
-  }
-  
-  /* Highlight table row on hover */
-  tr:hover {
-    background-color: #f5f5f5;
-  }
+  border-collapse: collapse;
+  width: 100%; 
+}
+
+th, td {
+  border: 1px solid #ddd; 
+  padding: 10px; 
+  text-align: left; 
+}
+
+/* Highlight table row on hover */
+tr:hover {
+  background-color: #f5f5f5;
+}
+
 /* Header 1 Styling */
 h1 {
-    color: #ff1a1a; /* Set text color for h1 */
-    font-weight: 300; /* Set font weight */
-    margin-top: 20px; /* Add margin at the top */
-    margin-bottom: 20px; /* Add margin at the bottom */
-  }
-
-
-
-  main table {
-    border-collapse: collapse;
-    width: 100%;
-  }
-  
-  main th, main td {
-    border: 1px solid #ddd;
-    padding: 5px;
-    text-align: left;
-  }
-  
-  main th {
-    background-color: #444;    
-    color: white;
-  }
-  
-  main tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-
-  /* Pannel */
-  .panel-important-title{
-    height: 7vh;
-    margin: 5vh 4vh;
-    width: 178vh;
-    background-color: #444;
-    font-size: 40px;
-    border-radius: 3px;
-    color: #ffffff;
-    text-align: center;
-    margin-bottom: 20px;
+  color: #ff1a1a; 
+  font-weight: 300; 
+  margin-top: 20px; 
+  margin-bottom: 20px; 
 }
- 
-/* .Table-data{
-    background-color: 
-    height: 20px;
-    margin
- }  */
 
+/* Main Table Styling */
+main table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+main th, main td {
+  border: 1px solid #e5fbff;
+  padding: 10px;
+  text-align: left;
+}
+
+main th {
+  background-color: #2a3542;
+  color: white;
+}
+
+main tr:nth-child(even) {
+  background-color: white;
+}
+
+/* Panel Important Title */
+.panel-important-title {
+  height: 60px;
+  margin: 20px;
+  width: calc(100% - 40px); 
+  background-color: #2a3542;
+  font-size: 24px; 
+  border-radius: 5px; 
+  color: #ffffff;
+  text-align: center;
+  line-height: 60px; 
+  margin-bottom: 20px;
+}
+
+/* Responsive Table Styling */
+@media screen and (max-width: 600px) {
+  main table, main th, main td {
+    font-size: 12px; 
+    padding: 8px; 
+  }
+
+  .panel-important-title {
+    font-size: 20px; 
+    line-height: 40px; 
+    height: 40px;
+    margin: 10px;
+  }
+}
+
+.property-img{
+  width: 70px;
+  height: 50px;
+}
 
   
     

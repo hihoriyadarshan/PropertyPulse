@@ -16,7 +16,9 @@
 
   export default class UsersComponent implements OnInit {
     users: any[] = [];
-  
+    currentPage: number = 1;
+    itemsPerPage: number = 3;
+
     constructor(private usersService: UsersService,private authService: AuthService) {}
   
     ngOnInit(): void {
@@ -54,5 +56,14 @@
             }
           );
       }
+    }
+    onPageChange(pageNumber: number): void {
+      this.currentPage = pageNumber;
+    }
+  
+    getPaginatedUsers(): any[] {
+      const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+      const endIndex = startIndex + this.itemsPerPage;
+      return this.users.slice(startIndex, endIndex);
     }
   }
