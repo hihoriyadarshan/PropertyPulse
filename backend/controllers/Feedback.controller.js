@@ -46,22 +46,6 @@ export const get_all_feedback = async (req, res) => {
   }
 };
 
-//feedback count
-export const FeedbackCountController = async (req, res) => {
-  try {
-    const total = await FeedbackModel.find({}).estimatedDocumentCount();
-    res.status(200).send({
-      success: true,
-      total,
-    });
-  } catch (error) {
-    console.log(error);
-    res.status(400).send({
-      message: "Error in Feedback count",
-      error,
-      success: false,
-    });
-  }
-};
+
 
 

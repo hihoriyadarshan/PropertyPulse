@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CategoryService } from '../../services/category.service';
 import { NgForm } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-create-category',
@@ -16,10 +17,16 @@ export default class CreateCategoryComponent implements OnInit {
   categoryName: string = '';
   category: any[] = [];
   
-  constructor(private categoryService: CategoryService) {}
+  constructor(private categoryService: CategoryService ,private authService :AuthService) {}
+
+  isLoggedIn: boolean = false;
 
     ngOnInit(): void {
       this.getAllCategory();
+
+      this.authService.isLoggedIn$.subscribe(res=>{
+        this.isLoggedIn = this.authService.isLoggedIn();
+       })
     }
 
 
@@ -36,7 +43,7 @@ export default class CreateCategoryComponent implements OnInit {
         if (response.success) {
           alert('Category created successfully');
           categoryForm.resetForm(); // Reset form after successful submission
-          this.categoryName = ''; // Clear the input field value
+          this.categoryName = ''; 
         } else {
           alert('Category already exists');
         }
@@ -83,4 +90,9 @@ export default class CreateCategoryComponent implements OnInit {
     }
   }
 
+  logout(){
+    localStorage.removeItem("user_id");
+    
+    this.authService.isLoggedIn$.next(false);
+  }
 }

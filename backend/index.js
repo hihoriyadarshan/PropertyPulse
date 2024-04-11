@@ -8,6 +8,7 @@ import inquiryRoute from "./routes/inquiry.js";
 import categoryRoute from "./routes/category.js";
 import propertyRoute from "./routes/propert.js";
 import feedbackRoute from "./routes/feedback.js";
+import dashboardRoute from "./routes/dashboard.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
@@ -29,6 +30,7 @@ app.use("/api/category", categoryRoute);
 app.use("/api/property", propertyRoute);
 app.use("/api/inquiry", inquiryRoute);
 app.use("/api/feedback", feedbackRoute);
+app.use("/api/dashboard", dashboardRoute);
 
 // Response Handler Middlerware
 app.use((obj, req, res, next) => {

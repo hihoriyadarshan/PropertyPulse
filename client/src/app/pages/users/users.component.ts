@@ -3,6 +3,7 @@
   import { UsersService } from '../../services/users.service';
   import { RouterModule } from '@angular/router';
   import { AuthService } from '../../services/auth.service';
+  
 
 
   @Component({
@@ -21,8 +22,16 @@
 
     constructor(private usersService: UsersService,private authService: AuthService) {}
   
+ 
+    isLoggedIn: boolean = false;
+
     ngOnInit(): void {
       this.getAllUsers();
+
+
+      this.authService.isLoggedIn$.subscribe(res=>{
+        this.isLoggedIn = this.authService.isLoggedIn();
+       })
     }
   
     getAllUsers(): void {
@@ -65,5 +74,11 @@
       const startIndex = (this.currentPage - 1) * this.itemsPerPage;
       const endIndex = startIndex + this.itemsPerPage;
       return this.users.slice(startIndex, endIndex);
+    }
+
+    logout(){
+      localStorage.removeItem("user_id");
+      
+      this.authService.isLoggedIn$.next(false);
     }
   }

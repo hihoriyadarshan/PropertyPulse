@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { PropertyService } from '../../services/property.service';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-admin-property',
@@ -18,8 +19,9 @@ import { ActivatedRoute, Params } from '@angular/router';
 export default class AdminPropertyComponent implements OnInit {
   properties: any[] = [];
   propertyPhotoMap: Map<string, string> = new Map(); // Use a map to store property photos
+  isLoggedIn: boolean = false;
 
-  constructor(private propertyService: PropertyService, private route: ActivatedRoute) {}
+  constructor(private propertyService: PropertyService, private route: ActivatedRoute, private authService :AuthService) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -30,6 +32,12 @@ export default class AdminPropertyComponent implements OnInit {
     });
 
     this.getAllProperties();
+  
+  
+    this.authService.isLoggedIn$.subscribe(res=>{
+      this.isLoggedIn = this.authService.isLoggedIn();
+     })
+  
   }
 
   getAllProperties(): void {
@@ -83,6 +91,11 @@ export default class AdminPropertyComponent implements OnInit {
           }
         );
     }
+  }
+  logout(){
+    localStorage.removeItem("user_id");
+    
+    this.authService.isLoggedIn$.next(false);
   }
 
 }

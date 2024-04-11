@@ -1,46 +1,112 @@
-<header role="banner">
-  <h1>Admin Panel</h1>
-  <ul class="utilities">
-    <br />
-    <li class="users"><a routerLink="/admin-profile">My Account</a></li>
-    <li class="logout warn">
-      <a routerLink="/login" (click)="logout()">Log Out</a>
-    </li>
-  </ul>
-</header>
+<body>
+  <header role="banner">
+    <h1>Property Plus</h1>
+    <ul class="utilities">
+      <br />
+      <li class="users"><a routerLink="/admin-profile">My Account</a></li>
+      <li class="logout warn">
+        <a routerLink="/login" (click)="logout()">Log Out</a>
+      </li>
+    </ul>
+  </header>
 
-<nav role="navigation">
-  <ul class="main">
-    <li class="dashboard"><a href="/admin-dashboard">Dashboard</a></li>
-    <li class="users"><a routerLink="/admin-users">Manage Users</a></li>
-    <li class="write"><a routerLink="/create-category">Create Category</a></li>
-    <li class="write">
-      <a routerLink="/create-sub-category">Sub-Category</a>
-    </li>
-    <li class="write"><a routerLink="/admin-property">Property</a></li>
+  <nav role="navigation">
+    <ul class="main">
+      <li class="dashboard"><a href="/admin-dashboard">Dashboard</a></li>
+      <li class="users"><a routerLink="/admin-users">Manage Users</a></li>
+      <li class="write">
+        <a routerLink="/create-category">Create Category</a>
+      </li>
+      <li class="write">
+        <a routerLink="/create-sub-category">Sub-Category</a>
+      </li>
+      <li class="write"><a routerLink="/admin-property">Property</a></li>
 
-    <li class="comments"><a routerLink="/admin-feedback">All Inquiry</a></li>
+      <li class="comments"><a routerLink="/admin-inquiry">All Inquiry</a></li>
 
-    <li class="comments"><a routerLink="/admin-contacts">Contact</a></li>
-    <li class="comments"><a routerLink="/admin-feedback">Feedback</a></li>
+      <li class="comments"><a routerLink="/admin-contacts">Contact</a></li>
+      <li class="comments"><a routerLink="/admin-feedback">Feedback</a></li>
 
-    <li class="edit"><a href="#">Edit Website</a></li>
-  </ul>
-</nav>
+      <!-- <li class="edit"><a href="#">Edit Website</a></li> -->
+    </ul>
+  </nav>
 
-<div class="container-fluid m-3 p-3">
-  <div class="row">
-    <div class="col-md-3">
-      <!-- <AdminMenu /> -->
-    </div>
-    <section class="panel important">
-      <div class="add">
-        <div class="head-2">
-          <div class="write-title12">Dashboard</div>
-        </div>
+  <div class="container-fluid m-3 p-3">
+    <div class="row">
+      <div class="col-md-3">
+        <!-- <AdminMenu /> -->
       </div>
-    </section>
+      <section class="panel important">
+        <div class="add">
+          <div class="head-2">
+            <div class="write-title12">Dashboard</div>
+          </div>
+        </div>
+      </section>
+      <ng-container *ngIf="isLoggedIn">
+        <a href="/admin-users" class="card1"
+          >Users <br />
+          <div class="font" *ngFor="let users of users">
+            <td>{{ users.count }}</td>
+          </div></a
+        >
+        <a href="/create-category" class="card2"
+          >Category <br />
+          <div class="font" *ngFor="let category of category">
+            <td>{{ category.count }}</td>
+          </div></a
+        >
+        <a href="/create-sub-category" class="card3"
+          >Sub-Category <br />
+          <div class="font" *ngFor="let subcategory of subcategory">
+            <td>{{ subcategory.count }}</td>
+          </div></a
+        >
+        <br />
+        <a href="/admin-property" class="card1"
+          >Property <br />
+          <div class="font" *ngFor="let property of property">
+            <td>{{ property.count }}</td>
+          </div></a
+        >
+        <a href="/admin-inquiry" class="card2"
+          >Inquiry <br />
+          <div class="font" *ngFor="let inqury of inqury">
+            <td>{{ inqury.count }}</td>
+          </div></a
+        >
+        <a href="/admin-contacts" class="card3"
+          >Contact <br />
+          <div class="font" *ngFor="let contact of contact">
+            <td>{{ contact.count }}</td>
+          </div></a
+        >
+
+        <br />
+        <a href="/admin-feedback" class="card1"
+          >Feedback <br />
+          <div class="font" *ngFor="let feedback of feedback">
+            <td>{{ feedback.count }}</td>
+          </div></a
+        >
+        <a class="card2"
+          >Unused Auhtority <br />
+          <div class="font" *ngFor="let subcategory of subcategory">
+            <td>0</td>
+          </div></a
+        >
+        <a class="card3"
+          >Unused Auhtority <br />
+          <div class="font" *ngFor="let subcategory of subcategory">
+            <td>0</td>
+          </div></a
+        >
+      </ng-container>
+      <ng-container *ngIf="!isLoggedIn"
+        ><div class="unauthorized-alert-msg">
+          You have try to Unauthorized Access. Please try to valid login.
+        </div>
+      </ng-container>
+    </div>
   </div>
-</div>
-
-
+</body>

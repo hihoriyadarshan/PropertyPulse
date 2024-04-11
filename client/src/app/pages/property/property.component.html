@@ -80,8 +80,9 @@
             <a
               class="d-block h5 mb-2"
               [routerLink]="['/more-property-details', property._id]"
-              >{{ property.description }}</a
+              >{{ getShortDescription(property.description) }}</a
             >
+
             <p>
               <i class="fa fa-map-marker-alt text-primary me-2"></i>123
               {{ property.address }}
@@ -96,12 +97,7 @@
             <small class="flex-fill text-center border-end py-2"
               ><i class="fa fa-bed text-primary me-2"></i>3 Bed</small
             >
-            <!-- <small
-              class="flex-fill text-center py-2"
-              routerLink="/more-property-details"
-              ><i class="fa fa-bath text-primary me-2"></i>More Details</small>
-           -->
-
+           
             <small
               class="flex-fill text-center py-2"
               [routerLink]="['/more-property-details', property._id]"

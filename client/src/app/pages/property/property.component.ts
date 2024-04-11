@@ -66,4 +66,16 @@ export default class PropertyComponent implements OnInit {
         reader.readAsDataURL(image);
       }
     }
+
+    getShortDescription(description: string): string {
+      const words = description.split(' ');
+      if (words.length > 8) {
+        return words.slice(0, 8).join(' ') + '...'; 
+      } else {  
+        return description;
+      }
+    }
+
+
+
   }

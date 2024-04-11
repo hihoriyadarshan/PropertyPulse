@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FeedbackService } from '../../services/feedback.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-admin-feedback',
@@ -10,41 +11,20 @@ import { RouterModule } from '@angular/router';
   templateUrl: './admin-feedback.component.html',
   styleUrl: './admin-feedback.component.css'
 })
-// export default class AdminFeedbackComponent implements OnInit{
-//   feedback: any[] = [];
 
-//   constructor(private feedbackService: FeedbackService) {}
-  
-//   ngOnInit(): void {
-//     this.getAllfeedback();
-//   }
-
-//   getAllfeedback(): void {
-//     this.feedbackService.getAllfeedback()
-//       .subscribe(
-//         (response: any) => {
-//           if (response.status === 200 && Array.isArray(response.data)) {
-//             this.feedback = response.data; 
-//           } else {
-//             console.error('Invalid response format:', response);
-//           }
-//         },
-//         (error: any) => {
-//           console.error('Error fetching Feedback:', error);
-//         }
-//       );
-//   }
-
-
-// }
 
 export default class AdminFeedbackComponent implements OnInit {
   feedback: any[] = [];
+  isLoggedIn: boolean = false;
 
-  constructor(private feedbackService: FeedbackService) {}
+  constructor(private feedbackService: FeedbackService,private authService :AuthService) {}
 
   ngOnInit(): void {
     this.getAllFeedback();
+
+    this.authService.isLoggedIn$.subscribe(res=>{
+      this.isLoggedIn = this.authService.isLoggedIn();
+     })
   }
 
   getAllFeedback(): void {
@@ -62,4 +42,12 @@ export default class AdminFeedbackComponent implements OnInit {
         }
       );
   }
+  logout(){
+    localStorage.removeItem("user_id");
+    
+    this.authService.isLoggedIn$.next(false);
+  }
+ 
+
+
 }

@@ -2,9 +2,9 @@
   <h1>Admin Panel</h1>
   <ul class="utilities">
     <br />
-    <li class="users"><a href="#">My Account</a></li>
+    <li class="users"><a routerLink="/admin-profile">My Account</a></li>
     <li class="logout warn">
-      <a routerLink="/login">Log Out</a>
+      <a routerLink="/login" (click)="logout()">Log Out</a>
     </li>
   </ul>
 </header>
@@ -19,95 +19,119 @@
     </li>
     <li class="write"><a routerLink="/admin-property">Property</a></li>
 
-    <li class="comments"><a routerLink="/admin-feedback">All Inquiry</a></li>
+    <li class="comments"><a routerLink="/admin-inquiry">All Inquiry</a></li>
 
     <li class="comments"><a routerLink="/admin-contacts">Contact</a></li>
     <li class="comments"><a routerLink="/admin-feedback">Feedback</a></li>
 
-    <li class="edit"><a href="#">Edit Website</a></li>
+    <!-- <li class="edit"><a href="#">Edit Website</a></li> -->
   </ul>
 </nav>
 
 <main role="main">
   <section class="panel important">
-    <h2>Create a Sub-category</h2>
+    <div class="panel-important-title2">Create Sub-Category</div>
+
     <form (submit)="createSubCategory()" #subCategoryForm="ngForm" novalidate>
-      <div class="form-group">
+      <ng-container *ngIf="isLoggedIn">
         <div class="form-group">
-          <label for="category">Category:</label>
-          <select
+          <div class="form-group">
+            <label for="category">Category:</label>
+            <select
+              class="form-control"
+              id="category"
+              [(ngModel)]="category"
+              name="category"
+              required
+              #categoryField="ngModel"
+            >
+              <option value="" disabled selected>Select a category</option>
+              <!-- Populate options dynamically from backend -->
+              <option *ngFor="let cat of categories" [value]="cat._id">
+                {{ cat.name }}
+              </option>
+            </select>
+            <div
+              *ngIf="
+                categoryField.invalid &&
+                (categoryField.dirty || categoryField.touched)
+              "
+              class="text-danger"
+            >
+              Category is required.
+            </div>
+          </div>
+
+          <label for="s_name">Sub-category Name:</label>
+          <input
+            type="text"
             class="form-control"
-            id="category"
-            [(ngModel)]="category"
-            name="category"
+            id="s_name"
+            [(ngModel)]="subCategoryName"
+            name="s_name"
             required
-            #categoryField="ngModel"
-          >
-            <option value="" disabled selected>Select a category</option>
-            <!-- Populate options dynamically from backend -->
-            <option *ngFor="let cat of categories" [value]="cat._id">
-              {{ cat.name }}
-            </option>
-          </select>
+            #subCategoryNameField="ngModel"
+          />
           <div
             *ngIf="
-              categoryField.invalid &&
-              (categoryField.dirty || categoryField.touched)
+              subCategoryNameField.invalid &&
+              (subCategoryNameField.dirty || subCategoryNameField.touched)
             "
             class="text-danger"
           >
-            Category is required.
+            Sub-category name is required.
           </div>
         </div>
 
-        <label for="s_name">Sub-category Name:</label>
-        <input
-          type="text"
-          class="form-control"
-          id="s_name"
-          [(ngModel)]="subCategoryName"
-          name="s_name"
-          required
-          #subCategoryNameField="ngModel"
-        />
-        <div
-          *ngIf="
-            subCategoryNameField.invalid &&
-            (subCategoryNameField.dirty || subCategoryNameField.touched)
-          "
-          class="text-danger"
-        >
-          Sub-category name is required.
+        <div class="btn-h">
+          <button
+            type="submit"
+            class="btn-btn-primary"
+            [disabled]="subCategoryForm.invalid"
+          >
+            Create Sub-category
+          </button>
         </div>
-      </div>
-
-      <div class="btn-h">
-        <button
-          type="submit"
-          class="btn btn-primary"
-          [disabled]="subCategoryForm.invalid"
-        >
-          Create Sub-category
-        </button>
-      </div>
+      </ng-container>
+      <ng-container *ngIf="!isLoggedIn"
+        ><div class="unauthorized-alert-msg1">
+          You have not Add Sub-Category. you have try to Unauthorized Access
+          Please try to valid login.
+        </div>
+      </ng-container>
     </form>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Delete</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Iterate over contacts and display each contact -->
-        <tr *ngFor="let subcategory of subcategory">
-          <td>{{ subcategory.s_name }}</td>
-          
+    <div class="Table-data">
+      <div class="panel-important-title">All Sub-Category</div>
+      <table>
+        <thead>
+          <tr class="th-w">
+            <th>Name</th>
+            <!-- <th>Update</th> -->
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Iterate over contacts and display each contact -->
 
+          <tr *ngFor="let subcategory of subcategory">
+            <ng-container *ngIf="isLoggedIn">
+              <td class="td-w">{{ subcategory.s_name }}</td>
+              <!-- <td class="td-w1"> Update</td> -->
 
-          <td><button (click)="deleteSubCategory(subcategory._id)">Delete</button></td>
-        </tr>
-      </tbody>
-    </table>
+              <td class="td-w1">
+                <button (click)="deleteSubCategory(subcategory._id)">
+                  Delete
+                </button>
+              </td>
+            </ng-container>
+          </tr>
+        </tbody>
+      </table>
+      <ng-container *ngIf="!isLoggedIn"
+        ><div class="unauthorized-alert-msg">
+          You have try to Unauthorized Access. Please try to valid login.
+        </div>
+      </ng-container>
+    </div>
   </section>
 </main>

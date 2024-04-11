@@ -28,5 +28,6 @@ export const routes: Routes = [
     {path: 'create-sub-category',loadComponent: ()=>import('./pages/create-sub-category/create-sub-category.component')},
     {path: 'admin-feedback',loadComponent: ()=>import('./pages/admin-feedback/admin-feedback.component')},
     {path: 'admin-profile',loadComponent: ()=>import('./pages/admin-profile/admin-profile.component')},
+    {path: 'admin-inquiry',loadComponent: ()=>import('./pages/admin-inquiry/admin-inquiry.component')},
     
 ];

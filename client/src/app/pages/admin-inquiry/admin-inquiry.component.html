@@ -1,1 +1,68 @@
-<p>admin-inquiry works!</p>
+<header role="banner">
+  <h1>Admin Panel</h1>
+  <ul class="utilities">
+    <br />
+    <li class="users"><a routerLink="/admin-profile">My Account</a></li>
+    <li class="logout warn">
+      <!-- <a routerLink="/login" (click)="logout()">Log Out</a> -->
+    </li>
+  </ul>
+</header>
+
+<nav role="navigation">
+  <ul class="main">
+    <li class="dashboard"><a href="/admin-dashboard">Dashboard</a></li>
+    <li class="users"><a routerLink="/admin-users">Manage Users</a></li>
+    <li class="write"><a routerLink="/create-category">Create Category</a></li>
+    <li class="write">
+      <a routerLink="/create-sub-category">Sub-Category</a>
+    </li>
+    <li class="write"><a routerLink="/admin-property">Property</a></li>
+
+    <li class="comments"><a routerLink="/admin-inquiry">All Inquiry</a></li>
+
+    <li class="comments"><a routerLink="/admin-contacts">Contact</a></li>
+    <li class="comments"><a routerLink="/admin-feedback">Feedback</a></li>
+
+    <!-- <li class="edit"><a href="#">Edit Website</a></li> -->
+  </ul>
+</nav>
+
+<div class="Table-data">
+  <main role="main">
+    <div class="panel-important-title">Inquiry</div>
+
+    <table>
+      <thead>
+        <tr>
+        
+          <th>Customer Name</th>
+          <th>Email</th>
+          <th>Topic</th>
+          <th>Message</th>
+          <th>Property Owner name</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Iterate over contacts and display each contact -->
+        <tr *ngFor="let contact of inquiry">
+          <ng-container *ngIf="isLoggedIn">
+            <td>{{ contact.name }}</td>
+            <td>{{ contact.email }}</td>
+            <td>{{ contact.subject }}</td>
+            <td>{{ contact.message }}</td>
+            <td>{{ contact.user_id}}</td>
+
+            <!-- <td><button (click)="deleteContact(contact._id)">Delete</button></td> -->
+          </ng-container>
+        </tr>
+      </tbody>
+    </table>
+    <ng-container *ngIf="!isLoggedIn"
+      ><div class="unauthorized-alert-msg">
+        You have try to Unauthorized Access. Please try to valid login.
+      </div>
+    </ng-container>
+  </main>
+</div>

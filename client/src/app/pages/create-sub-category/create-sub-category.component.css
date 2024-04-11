@@ -479,17 +479,9 @@ h1 {
   margin-bottom: 20px; 
 }
 
-/* Main Table Styling */
-main table {
-  border-collapse: collapse;
-  width: 100%;
-}
 
-main th, main td {
-  border: 1px solid #e5fbff;
-  padding: 10px;
-  text-align: left;
-}
+
+
 
 main th {
   background-color: #2a3542;
@@ -500,25 +492,13 @@ main tr:nth-child(even) {
   background-color: white;
 }
 
-/* Panel Important Title */
-.panel-important-title {
-  height: 60px;
-  margin: 20px;
-  width: calc(100% - 40px); 
-  background-color: #2a3542;
-  font-size: 24px; 
-  border-radius: 5px; 
-  color: #ffffff;
-  text-align: center;
-  line-height: 60px; 
-  margin-bottom: 20px;
-}
+
 
 /* Responsive Table Styling */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 00px) {
   main table, main th, main td {
     font-size: 12px; 
-    padding: 8px; 
+    /* padding: 8px;  */
   }
 
   .panel-important-title {
@@ -532,8 +512,8 @@ main tr:nth-child(even) {
   /* Pannel */
   .panel-important-title{
     height: 7vh;
-    margin: 5vh 4vh;
-    width: 178vh;
+    margin: 6vh 8px 4vh;
+    width: 64vh;
     background-color: #2a3542;
     font-size: 40px;
     border-radius: 3px;
@@ -542,12 +522,63 @@ main tr:nth-child(even) {
     margin-bottom: 20px;
 }
  
-/* .Table-data{
-    background-color: 
-    height: 20px;
-    margin
- }  */
+.panel-important-title2{
+  height: 7vh;
+  margin: 6vh 8px 4vh;
+  width: 172vh;
+  background-color: #2a3542;
+  font-size: 40px;
+  border-radius: 3px;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 20px;
+}
 
+.td-w{
+  width: 0px;
+}  
 
-  
+.th-w{
+  width:120px;
+}
+
+.td-w1{
+  width: 40px;
+}
     
+.Table-data{
+  margin-right: 800px;
+}
+
+
+.btn-btn-primary:enabled{
+  background-color: #6ae8ff ; 
+ }
+
+.btn-btn-primary{
+ background-color: #5dd3de ; 
+ width: 170px;
+ height: 50px;
+ margin-top: 20px;
+ border-radius: 4px;
+}
+
+.unauthorized-alert-msg {
+  background-color: #f8d7da; 
+  color: #721c24; 
+  padding: 10px 15px; 
+  border: 1px solid #f5c6cb; 
+  border-radius: 5px; 
+  font-weight: bold; 
+  width: 480px;
+}
+
+.unauthorized-alert-msg1 {
+  background-color: #f8d7da; 
+  color: #721c24; 
+  padding: 10px 15px; 
+  border: 1px solid #f5c6cb; 
+  border-radius: 5px; 
+  font-weight: bold; 
+  width: 710px;
+}

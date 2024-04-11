@@ -501,8 +501,8 @@ main tr:nth-child(even) {
 /* Panel Important Title */
 .panel-important-title {
   height: 60px;
-  margin: 20px;
-  width: calc(100% - 40px); 
+  margin-left: 27px;
+  width: calc(100%); 
   background-color: #2a3542;
   font-size: 24px; 
   border-radius: 5px; 
@@ -533,4 +533,13 @@ main tr:nth-child(even) {
 }
 
   
-    
+.unauthorized-alert-msg {
+  background-color: #f8d7da; 
+  color: #721c24; 
+  padding: 10px 15px; 
+  border: 1px solid #f5c6cb; 
+  border-radius: 5px; 
+  font-weight: bold; 
+  width: 510px;
+  margin-left: 30px;
+}

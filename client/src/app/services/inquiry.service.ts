@@ -14,4 +14,9 @@ export class InquiryService {
   createInquiry(inquiryData: any): Observable<any> {
     return this.http.post(inquiryUrls.inquiryServiceApi + 'create-inquiry', inquiryData);
   }
+
+  getAllInquiry(): Observable<any[]> {
+    return this.http.get<any[]>(`${inquiryUrls.inquiryServiceApi}get-All-inquiry`);
+}
+
 }

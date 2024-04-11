@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CategoryService } from '../../services/category.service';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-create-sub-category',
@@ -17,12 +18,20 @@ export default class CreateSubCategoryComponent implements OnInit {
   categories: any[] = [];
   subcategory: any[] = [];
 
-  constructor(private categoryService: CategoryService) { }
+  constructor(private categoryService: CategoryService, private authService :AuthService) { }
+
+  isLoggedIn: boolean = false;
+
 
   ngOnInit(): void {
     // Fetch categories from backend when component initializes
     this.fetchCategories();
     this.getAllSubCategory();
+
+
+    this.authService.isLoggedIn$.subscribe(res=>{
+      this.isLoggedIn = this.authService.isLoggedIn();
+     })
   }
 
   // Fetch categories from backend
@@ -94,6 +103,10 @@ export default class CreateSubCategoryComponent implements OnInit {
   }
 
 
-
+  logout(){
+    localStorage.removeItem("user_id");
+    
+    this.authService.isLoggedIn$.next(false);
+  }
 
 }

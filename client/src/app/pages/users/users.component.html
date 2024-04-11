@@ -4,7 +4,7 @@
     <br />
     <li class="users"><a href="#">My Account</a></li>
     <li class="logout warn">
-      <a routerLink="/">Log Out</a>
+      <a routerLink="/login" (click)="logout()">Log Out</a>
     </li>
   </ul>
 </header>
@@ -19,12 +19,12 @@
     </li>
     <li class="write"><a routerLink="/admin-property">Property</a></li>
 
-    <li class="comments"><a routerLink="/admin-feedback">All Inquiry</a></li>
+    <li class="comments"><a routerLink="/admin-inquiry">All Inquiry</a></li>
 
     <li class="comments"><a routerLink="/admin-contacts">Contact</a></li>
     <li class="comments"><a routerLink="/admin-feedback">Feedback</a></li>
 
-    <li class="edit"><a href="#">Edit Website</a></li>
+    <!-- <li class="edit"><a href="#">Edit Website</a></li> -->
   </ul>
 </nav>
 
@@ -45,16 +45,25 @@
       </thead>
       <tbody>
         <!-- Iterate over contacts and display each contact -->
+
         <tr *ngFor="let user of users">
-          <td>{{ user.name }}</td>
-          <td>{{ user.username }}</td>
-          <td>{{ user.email }}</td>
-          <td>{{ user.phone }}</td>
-          <td>{{ user.address }}</td>
-          <td><button (click)="deleteUser(user._id)">Delete</button></td>
+          <ng-container *ngIf="isLoggedIn">
+            <td>{{ user.name }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.phone }}</td>
+            <td>{{ user.address }}</td>
+            <td><button (click)="deleteUser(user._id)">Delete</button></td>
+          </ng-container>
         </tr>
       </tbody>
     </table>
+
+    <ng-container  *ngIf="!isLoggedIn"><div class="unauthorized-alert-msg">
+      You have try to Unauthorized Access. Please try to valid login.
+    </div> </ng-container>
+    
+
     <div class="pagination">
       <button
         (click)="onPageChange(currentPage - 1)"

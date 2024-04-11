@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { RouterModule } from '@angular/router';
-import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-admin-contacts',
@@ -13,11 +13,20 @@ import { Router } from '@angular/router';
 })
 export default class AdminContactsComponent implements OnInit {
   contacts: any[] = [];
+  isLoggedIn: boolean = false;
 
   constructor(private authService: AuthService) { }
 
+
+
   ngOnInit(): void {
     this.getAllContacts();
+
+
+    this.authService.isLoggedIn$.subscribe(res=>{
+      this.isLoggedIn = this.authService.isLoggedIn();
+     })
+
   }
 
   getAllContacts(): void {
@@ -47,4 +56,11 @@ export default class AdminContactsComponent implements OnInit {
         );
     }
   }
+
+  logout(){
+    localStorage.removeItem("user_id");
+    
+    this.authService.isLoggedIn$.next(false);
+  }
+
 }
