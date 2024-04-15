@@ -1,6 +1,6 @@
 <div class="bg">
   <form (ngSubmit)="onSubmit(form)" #form="ngForm">
-    <div class="header">Add Property</div>
+    <div class="header">Rent/Sell Property</div>
     <input type="hidden" name="user_id" [value]="user_id || ''" />
 
     <div class="form-group">
@@ -14,7 +14,10 @@
         [(ngModel)]="name"
         #nameField="ngModel"
       />
-      <div *ngIf="nameField.invalid && (nameField.dirty || nameField.touched)" class="text-danger">
+      <div
+        *ngIf="nameField.invalid && (nameField.dirty || nameField.touched)"
+        class="text-danger"
+      >
         Name is required.
       </div>
     </div>
@@ -30,7 +33,12 @@
         [(ngModel)]="address"
         #addressField="ngModel"
       />
-      <div *ngIf="addressField.invalid && (addressField.dirty || addressField.touched)" class="text-danger">
+      <div
+        *ngIf="
+          addressField.invalid && (addressField.dirty || addressField.touched)
+        "
+        class="text-danger"
+      >
         Address is required.
       </div>
     </div>
@@ -46,20 +54,51 @@
         [(ngModel)]="description"
         #descriptionField="ngModel"
       ></textarea>
-      <div *ngIf="descriptionField.invalid && (descriptionField.dirty || descriptionField.touched)" class="text-danger">
+      <div
+        *ngIf="
+          descriptionField.invalid &&
+          (descriptionField.dirty || descriptionField.touched)
+        "
+        class="text-danger"
+      >
         Description is required.
       </div>
     </div>
 
     <div class="form-group">
       <label for="type">Type:</label><br />
-      <label><input type="radio" name="type" value="commercial" [(ngModel)]="type" /> Commercial</label><br />
-      <label><input type="radio" name="type" value="residential" [(ngModel)]="type" /> Residential</label><br />
-      <label><input type="radio" name="type" value="industrial" [(ngModel)]="type" /> Industrial</label><br />
-      <label><input type="radio" name="type" value="land" [(ngModel)]="type" /> Land</label><br />
-      <div *ngIf="!type" class="text-danger">
-        Type is required.
-      </div>
+      <label
+        ><input
+          type="radio"
+          name="type"
+          value="commercial"
+          [(ngModel)]="type"
+        />
+        Commercial</label
+      ><br />
+      <label
+        ><input
+          type="radio"
+          name="type"
+          value="residential"
+          [(ngModel)]="type"
+        />
+        Residential</label
+      ><br />
+      <label
+        ><input
+          type="radio"
+          name="type"
+          value="industrial"
+          [(ngModel)]="type"
+        />
+        Industrial</label
+      ><br />
+      <label
+        ><input type="radio" name="type" value="land" [(ngModel)]="type" />
+        Land</label
+      ><br />
+      <div *ngIf="!type" class="text-danger">Type is required.</div>
     </div>
 
     <div class="form-group">
@@ -73,7 +112,10 @@
         [(ngModel)]="price"
         #priceField="ngModel"
       />
-      <div *ngIf="priceField.invalid && (priceField.dirty || priceField.touched)" class="text-danger">
+      <div
+        *ngIf="priceField.invalid && (priceField.dirty || priceField.touched)"
+        class="text-danger"
+      >
         Price is required.
       </div>
     </div>
@@ -89,7 +131,10 @@
         [(ngModel)]="sqft"
         #sqftField="ngModel"
       />
-      <div *ngIf="sqftField.invalid && (sqftField.dirty || sqftField.touched)" class="text-danger">
+      <div
+        *ngIf="sqftField.invalid && (sqftField.dirty || sqftField.touched)"
+        class="text-danger"
+      >
         Sqft is required.
       </div>
     </div>
@@ -109,9 +154,25 @@
 
     <div class="form-group">
       <label> Rent/Sell:</label><br />
-      <label><input type="radio" name="rentSell" value="rent" [(ngModel)]="latitude" /> Rent</label><br />
-      <label><input type="radio" name="rentSell" value="sell" [(ngModel)]="latitude" /> Sell</label><br />
-      <div *ngIf="!latitude" class="text-danger">
+      <label
+        ><input
+          type="radio"
+          name="rentSell"
+          value="rent"
+          [(ngModel)]="Rent_sell"
+        />
+        Rent</label
+      ><br />
+      <label
+        ><input
+          type="radio"
+          name="rentSell"
+          value="sell"
+          [(ngModel)]="Rent_sell"
+        />
+        Sell</label
+      ><br />
+      <div *ngIf="!Rent_sell" class="text-danger">
         Rent/Sell option is required.
       </div>
     </div>
@@ -128,7 +189,13 @@
         [(ngModel)]="longitude"
         #longitudeField="ngModel"
       />
-      <div *ngIf="longitudeField.invalid && (longitudeField.dirty || longitudeField.touched)" class="text-danger">
+      <div
+        *ngIf="
+          longitudeField.invalid &&
+          (longitudeField.dirty || longitudeField.touched)
+        "
+        class="text-danger"
+      >
         Map details are required.
       </div>
     </div>
@@ -149,7 +216,13 @@
           {{ cat.name }}
         </option>
       </select>
-      <div *ngIf="categoryField.invalid && (categoryField.dirty || categoryField.touched)" class="text-danger">
+      <div
+        *ngIf="
+          categoryField.invalid &&
+          (categoryField.dirty || categoryField.touched)
+        "
+        class="text-danger"
+      >
         Category is required.
       </div>
     </div>
@@ -165,11 +238,20 @@
         #subcategoryField="ngModel"
       >
         <option value="" disabled selected>Select a subcategory</option>
-        <option *ngFor="let subcategory of subcategories" [value]="subcategory._id">
+        <option
+          *ngFor="let subcategory of subcategories"
+          [value]="subcategory._id"
+        >
           {{ subcategory.s_name }}
         </option>
       </select>
-      <div *ngIf="subcategoryField.invalid && (subcategoryField.dirty || subcategoryField.touched)" class="text-danger">
+      <div
+        *ngIf="
+          subcategoryField.invalid &&
+          (subcategoryField.dirty || subcategoryField.touched)
+        "
+        class="text-danger"
+      >
         Subcategory is required.
       </div>
     </div>

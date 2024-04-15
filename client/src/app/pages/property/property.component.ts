@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { PropertyService } from '../../services/property.service';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-property',
@@ -17,9 +17,10 @@ import { ActivatedRoute, Params } from '@angular/router';
 export default class PropertyComponent implements OnInit {
     properties: any[] = [];
     propertyPhotoMap: Map<string, string> = new Map(); // Use a map to store property photos
-  
+    selectedPriceFilter: number = 0; // Default value for price filter
+    selectedRentSellFilter: string = ''; 
     
-    constructor(private propertyService: PropertyService, private route: ActivatedRoute) {}
+    constructor(private propertyService: PropertyService, private route: ActivatedRoute, private router: Router) {}
   
     ngOnInit(): void {
       this.route.params.subscribe(params => {
@@ -78,4 +79,18 @@ export default class PropertyComponent implements OnInit {
 
 
 
+    
+    applyFilter(filterValue: string): void {
+      this.selectedRentSellFilter = filterValue;
+      let filteredProperties = [...this.properties]; // Create a copy of this.properties
+  
+      if (this.selectedRentSellFilter !== '') {
+        filteredProperties = filteredProperties.filter(property => property.Rent_sell === this.selectedRentSellFilter);
+      }
+  
+      // Update properties list
+      this.properties = filteredProperties;
+    }
   }
+    
+

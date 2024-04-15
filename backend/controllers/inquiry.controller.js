@@ -1,3 +1,4 @@
+import inquiryModel from "../models/InquiryModel.js";
 import Inquiry from "../models/InquiryModel.js";
 
 // Create a new inquiry
@@ -59,6 +60,27 @@ export const deleteInquiry = async (req, res) => {
       return res.status(404).json({ message: "Inquiry not found" });
     }
     res.status(200).json({ message: "Inquiry deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+
+// Inquiry find by user_id
+
+export const findinquiryByUserId = async (req, res) => {
+  const { id } = req.params; 
+
+  try {  
+    const inquiries = await inquiryModel.find({ user_id: id });
+
+    if (!inquiries || inquiries.length === 0) {
+      return res
+        .status(404)
+        .json({ message: "No inquiries found for the provided user_id" });
+    }
+
+    res.status(200).json(inquiries);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

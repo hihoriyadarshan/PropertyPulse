@@ -1,0 +1,14 @@
+<div class="inquiries-card">
+    <h2>User Inquiries</h2>
+    <p class="no-inquiries" *ngIf="inquiries.length === 0">No inquiries found.</p>
+    <ul *ngIf="inquiries.length > 0">
+      <li *ngFor="let inquiry of inquiries">
+        <p><strong>Name:</strong> {{ inquiry.name }}</p>
+        <p><strong>Email:</strong> {{ inquiry.email }}</p>
+        <p><strong>Subject:</strong> {{ inquiry.subject }}</p>
+        <p><strong>Message:</strong> {{ inquiry.message }}</p>
+        <p><strong>Status:</strong> {{ inquiry.status }}</p>
+        <!-- Add more details as needed -->
+      </li>
+    </ul>
+  </div>

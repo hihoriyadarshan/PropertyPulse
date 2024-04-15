@@ -19,7 +19,7 @@ export const createProperty = async (req, res) => {
       type,
       price,
       sqft,
-      latitude,
+      Rent_sell,
       longitude,
       category,
       subcategory,
@@ -35,7 +35,7 @@ export const createProperty = async (req, res) => {
       "type",
       "price",
       "sqft",
-      "latitude",
+      "Rent_sell",
       "longitude",
       "category",
       "subcategory",
@@ -60,7 +60,7 @@ export const createProperty = async (req, res) => {
       type,
       price,
       sqft,
-      latitude,
+      Rent_sell,
       longitude,
       category,
       subcategory,
@@ -206,3 +206,25 @@ export const getPropertyById = async (req, res) => {
 };
 
 
+//property filters
+export const getFilteredProperties = async (req, res) => {
+  try {
+    const { minPrice, maxPrice, rent_sell } = req.query;
+
+    // Constructing the filter object
+    const filter = {};
+    if (minPrice && maxPrice) {
+      filter.price = { $gte: parseInt(minPrice), $lte: parseInt(maxPrice) };
+    }
+    if (rent_sell) {
+      filter.Rent_sell = rent_sell;
+    }
+
+    // Fetch properties based on filters
+    const properties = await Property.find(filter);
+
+    res.json(properties);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

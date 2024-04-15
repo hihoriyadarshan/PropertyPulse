@@ -36,77 +36,69 @@
       <div class="col-md-3">
         <!-- <AdminMenu /> -->
       </div>
-      <section class="panel important">
-        <div class="add">
-          <div class="head-2">
-            <div class="write-title12">Dashboard</div>
-          </div>
-        </div>
+      <section>
+        <div class="dashboard121">Dashboard</div>
       </section>
-      <ng-container *ngIf="isLoggedIn">
-        <a href="/admin-users" class="card1"
-          >Users <br />
-          <div class="font" *ngFor="let users of users">
-            <td>{{ users.count }}</td>
-          </div></a
-        >
-        <a href="/create-category" class="card2"
-          >Category <br />
-          <div class="font" *ngFor="let category of category">
-            <td>{{ category.count }}</td>
-          </div></a
-        >
-        <a href="/create-sub-category" class="card3"
-          >Sub-Category <br />
-          <div class="font" *ngFor="let subcategory of subcategory">
-            <td>{{ subcategory.count }}</td>
-          </div></a
-        >
-        <br />
-        <a href="/admin-property" class="card1"
-          >Property <br />
-          <div class="font" *ngFor="let property of property">
-            <td>{{ property.count }}</td>
-          </div></a
-        >
-        <a href="/admin-inquiry" class="card2"
-          >Inquiry <br />
-          <div class="font" *ngFor="let inqury of inqury">
-            <td>{{ inqury.count }}</td>
-          </div></a
-        >
-        <a href="/admin-contacts" class="card3"
-          >Contact <br />
-          <div class="font" *ngFor="let contact of contact">
-            <td>{{ contact.count }}</td>
-          </div></a
-        >
+      <!-- <ng-container *ngIf="isLoggedIn"> -->
+      <a href="/admin-users" class="card1"
+        >Users <br />
+        <div class="font" *ngFor="let users of users">
+          <td>{{ users.count }}</td>
+        </div></a
+      >
+      <a href="/create-category" class="card2"
+        >Category <br />
+        <div class="font" *ngFor="let category of category">
+          <td>{{ category.count }}</td>
+        </div></a
+      >
+      <a href="/create-sub-category" class="card3"
+        >Sub-Category <br />
+        <div class="font" *ngFor="let subcategory of subcategory">
+          <td>{{ subcategory.count }}</td>
+        </div></a
+      >
+      <br />
+      <a href="/admin-property" class="card1"
+        >Property <br />
+        <div class="font" *ngFor="let property of property">
+          <td>{{ property.count }}</td>
+        </div></a
+      >
+      <a href="/admin-inquiry" class="card2"
+        >Inquiry <br />
+        <div class="font" *ngFor="let inqury of inqury">
+          <td>{{ inqury.count }}</td>
+        </div></a
+      >
+      <a href="/admin-contacts" class="card3"
+        >Contact <br />
+        <div class="font" *ngFor="let contact of contact">
+          <td>{{ contact.count }}</td>
+        </div></a
+      >
 
-        <br />
-        <a href="/admin-feedback" class="card1"
-          >Feedback <br />
-          <div class="font" *ngFor="let feedback of feedback">
-            <td>{{ feedback.count }}</td>
-          </div></a
-        >
-        <a class="card2"
-          >Unused Auhtority <br />
-          <div class="font" *ngFor="let subcategory of subcategory">
-            <td>0</td>
-          </div></a
-        >
-        <a class="card3"
-          >Unused Auhtority <br />
-          <div class="font" *ngFor="let subcategory of subcategory">
-            <td>0</td>
-          </div></a
-        >
-      </ng-container>
-      <ng-container *ngIf="!isLoggedIn"
-        ><div class="unauthorized-alert-msg">
-          You have try to Unauthorized Access. Please try to valid login.
-        </div>
-      </ng-container>
+      <br />
+      <a href="/admin-feedback" class="card1"
+        >Feedback <br />
+        <div class="font" *ngFor="let feedback of feedback">
+          <td>{{ feedback.count }}</td>
+        </div></a
+      >
+      <a class="card2"
+        >Unused Auhtority <br />
+        <div class="font" *ngFor="let subcategory of subcategory">
+          <td>0</td>
+        </div></a
+      >
+      <a class="card3"
+        >Unused Auhtority <br />
+        <div class="font" *ngFor="let subcategory of subcategory">
+          <td>0</td>
+        </div></a
+      >
+      <!-- </ng-container> -->
     </div>
   </div>
+  <!-- <ng-container *ngIf="!isLoggedIn" -->
 </body>

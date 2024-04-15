@@ -11,6 +11,43 @@
 </div>
 <!-- Header End -->
 
+<!-- <div class="container mt-5 mb-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="input-group">
+        <label class="input-group-text" for="priceFilter">Price</label>
+        <select
+          class="form-select"
+          id="priceFilter"
+          [(ngModel)]="selectedPriceFilter"
+          (change)="applyFilter()"
+        >
+          <option value="0">All</option>
+          <option value="1">Below 5000</option>
+          <option value="2">5000 - 10000</option>
+          <option value="3">10000 - 15000</option>
+          <!-- Add more options as needed -->
+<!-- </select> -->
+<!-- </div> -->
+<!-- </div> -->
+<!-- <div class="col-lg-6">
+      <div class="input-group">
+        <label class="input-group-text" for="rentSellFilter">Rent/Sell</label>
+        <select
+          class="form-select"
+          id="rentSellFilter"
+          [(ngModel)]="selectedRentSellFilter"
+          (change)="applyFilter()"
+        >
+          <option value="">All</option>
+          <option value="rent" >For Rent</option>
+          <option value="sell">For Sale</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div> -->
+
 <!-- Property Start -->
 <div class="container-xxl py-5">
   <div class="container">
@@ -31,18 +68,24 @@
           <a
             class="btn btn-outline-primary active"
             data-bs-toggle="pill"
-            href="#tab-1"
+            routerLink="/home"
             >Featured</a
           >
         </li>
         <li class="nav-item me-2">
-          <a class="btn btn-outline-primary" data-bs-toggle="pill" href="#tab-2"
-            >For Sell</a
+          <a
+            class="btn btn-outline-primary"
+            data-bs-toggle="pill"
+            (click)="applyFilter('rent')"
+            >For Rent</a
           >
         </li>
         <li class="nav-item me-0">
-          <a class="btn btn-outline-primary" data-bs-toggle="pill" href="#tab-3"
-            >For Rent</a
+          <a
+            class="btn btn-outline-primary"
+            data-bs-toggle="pill"
+            (click)="applyFilter('sell')"
+            >For Sell</a
           >
         </li>
       </ul>
@@ -57,7 +100,7 @@
             <div
               class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3"
             >
-              {{ property.latitude }}
+              {{ property.Rent_sell }}
             </div>
 
             <div *ngIf="propertyPhotoMap.get(property._id)">
@@ -72,7 +115,7 @@
             <div
               class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3"
             >
-              House
+              {{ property.type }}
             </div>
           </div>
           <div class="p-4 pb-0">
@@ -97,7 +140,7 @@
             <small class="flex-fill text-center border-end py-2"
               ><i class="fa fa-bed text-primary me-2"></i>3 Bed</small
             >
-           
+
             <small
               class="flex-fill text-center py-2"
               [routerLink]="['/more-property-details', property._id]"

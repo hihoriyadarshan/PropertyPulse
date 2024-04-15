@@ -17,6 +17,7 @@ export const routes: Routes = [
     {path: 'created-property-details',loadComponent: ()=>import('./pages/created-property-details/created-property-details.component')},
     {path: 'more-property-details/:id',loadComponent: ()=>import('./pages/more-details-property/more-details-property.component')},
     {path: 'create-feedback',loadComponent: ()=>import('./pages/feedback/feedback.component')},
+    {path: 'getuser- inquiry',loadComponent: ()=>import('./pages/user-inquiry/user-inquiry.component')},
 
     
     

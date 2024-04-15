@@ -13,8 +13,7 @@ import { DashboardService } from '../../services/dashboard.service';
 })
 export default class AdminDashboardComponent implements OnInit {
 
-  authService = inject(AuthService);
-  isLoggedIn: boolean = false;
+  
   users: any[] = [];
   category: any[] = [];
   subcategory: any[] = [];
@@ -22,10 +21,11 @@ export default class AdminDashboardComponent implements OnInit {
   inqury: any[]= [];
   contact: any[]= [];
   feedback: any[]= [];
+  isLoggedIn: boolean = false;
 
   
 
-  constructor(private dashboardService : DashboardService ) {}
+  constructor(private dashboardService : DashboardService, private authService :AuthService) {}
 
 
   ngOnInit(): void {
@@ -38,15 +38,13 @@ export default class AdminDashboardComponent implements OnInit {
     this.getFeedbackCount();
 
     this.authService.isLoggedIn$.subscribe(res=>{
-     this.isLoggedIn = this.authService.isLoggedIn();
-    })
+      this.isLoggedIn = this.authService.isLoggedIn();
+     })
+  
+
   }
 
-  logout(){
-    localStorage.removeItem("user_id");
-    
-    this.authService.isLoggedIn$.next(false);
-  }
+  
 
 
   getUserCount(): void {
@@ -71,6 +69,12 @@ export default class AdminDashboardComponent implements OnInit {
       );
   }
 
+
+  logout(){
+    localStorage.removeItem("user_id");
+    
+    this.authService.isLoggedIn$.next(false);
+  }
 
   getCategoryCount(): void {
     this.dashboardService.getCategoryCount().subscribe(

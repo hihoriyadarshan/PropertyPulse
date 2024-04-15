@@ -198,3 +198,15 @@ input[type="file"] {
     margin-left: 470px;
 }
 
+.header{
+  margin-top: 20px;
+  border-radius: 7px;
+  margin-left: 25px;
+  height: 60px;
+  font-size: 35px;
+  text-align: center;
+  color: white;
+  margin-bottom: 50px;
+  width: 1470px;
+  background-color:#2bc5d4;
+}

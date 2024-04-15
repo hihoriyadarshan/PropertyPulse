@@ -1,12 +1,15 @@
-.header {
-    font-size: 34px; 
-    font-weight: bold; 
-    color: #333; 
-    margin-bottom: 20px; 
-    text-align: center; 
-    text-transform: uppercase; 
-  }
-
+.header{
+  margin-top: 20px;
+  border-radius: 7px;
+  margin-left: 25px;
+  height: 60px;
+  font-size: 35px;
+  text-align: center;
+  color: white;
+  margin-bottom: 50px;
+  width: 1470px;
+  background-color:#2bc5d4;
+}
 .property-container {
     display: flex;
     flex-wrap: wrap;
@@ -17,7 +20,7 @@
     margin: 10px;
     border: 1px solid #ccc;
     border-radius: 10px;
-    padding: 20px; /* Add padding */
+    padding: 20px; 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out;
   }

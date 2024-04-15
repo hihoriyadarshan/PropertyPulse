@@ -27,7 +27,7 @@ export default class CreatePropertyComponent implements OnInit {
   price: number = 0;
   sqft: number = 0;
   photo: File | null = null;
-  latitude: string = '';
+  Rent_sell: string = '';
   longitude: string = '';
 
   constructor(private propertyService: PropertyService, private router: Router,private categoryService: CategoryService) { }
@@ -73,7 +73,7 @@ export default class CreatePropertyComponent implements OnInit {
       formData.append('photo', this.photo, this.photo.name);
     }
     
-    formData.append('latitude', this.latitude);
+    formData.append('Rent_sell', this.Rent_sell);
     formData.append('longitude', this.longitude);
     formData.append('category', this.category);
     formData.append('subcategory', this.subcategory);

@@ -6,6 +6,7 @@ import {
   deletepropertyController,
   findPropertiesByUserId,
   getAllProperties,
+  getFilteredProperties,
   getPropertyById,
 } from "../controllers/property.controller.js";
 
@@ -33,6 +34,7 @@ router.get("/getPropertyById/:id",getPropertyById);
 router.delete("/deleteproperty/:id", deletepropertyController);
 
 
-
+// properties filter
+router.get("/filter-properties", getFilteredProperties);
 
 export default router;

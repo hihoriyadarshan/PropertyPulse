@@ -19,4 +19,9 @@ export class InquiryService {
     return this.http.get<any[]>(`${inquiryUrls.inquiryServiceApi}get-All-inquiry`);
 }
 
+getUserinquiryById(userId: string): Observable<any> {
+  return this.http.get(`${inquiryUrls.inquiryServiceApi}user_inquiry/${userId}`);   
+}
+
+
 }

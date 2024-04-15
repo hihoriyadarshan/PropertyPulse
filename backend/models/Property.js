@@ -41,7 +41,7 @@ const propertySchema = new mongoose.Schema(
       data: Buffer,
       contentType: String,
     },
-    latitude: {
+    Rent_sell: {
       type: String,
       required: true,
     },
@@ -62,6 +62,5 @@ const propertySchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-
 
 export default mongoose.model("Property", propertySchema);

@@ -3,6 +3,7 @@ import {
   createInquiry,
   getInquiries,
   deleteInquiry,
+  findinquiryByUserId,
 } from "../controllers/inquiry.controller.js";
 
 const router = express.Router();
@@ -17,6 +18,7 @@ router.get("/get-All-inquiry", getInquiries);
 
 router.delete("/deleteinquiry/:id", deleteInquiry);
 
-// Update Inquery
+// find user_id
+router.get("/user_inquiry/:id", findinquiryByUserId);
 
 export default router;
