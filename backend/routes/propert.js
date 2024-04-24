@@ -28,11 +28,10 @@ router.get("/getAllproperty", getAllProperties);
 router.get("/:id", PropertyPhotoController);
 
 //  get Single property by Property Id
-router.get("/getPropertyById/:id",getPropertyById);
+router.get("/getPropertyById/:id", getPropertyById);
 
 // Delete property By Id
 router.delete("/deleteproperty/:id", deletepropertyController);
-
 
 // properties filter
 router.get("/filter-properties", getFilteredProperties);

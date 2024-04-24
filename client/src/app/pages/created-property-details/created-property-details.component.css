@@ -65,3 +65,11 @@
     background-color: #0056b3;
   }
   
+  .delete-btn{
+    background-color: red;
+    color: #ffffff;
+    width: 80px;
+    height: 40px;
+    border-radius: 8px;
+    margin-left: 700px;
+  }

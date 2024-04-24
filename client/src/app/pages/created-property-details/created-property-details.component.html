@@ -15,8 +15,13 @@
         <p><strong>Price:</strong> ${{ property.price }}</p>
         <p><strong>Sqft:</strong> {{ property.sqft }}</p>
         <p><strong>Rent-sell:</strong> {{ property.Rent_sell }}</p>
-        <!-- <p><strong>G-Map Location:</strong><a routerLink="{{ property.longitude }}"/></p> -->
-        <p><strong>G-Map Location:</strong> <a [href]="'{{ property.longitude }}'">Google Maps Link</a></p>
+        <p>
+          <strong>G-Map Location:</strong>
+          <a href="https://maps.app.goo.gl/akKugNTarW7StUTF7"
+            >View Google Map</a
+          >
+        </p>
+        <button (click)="deleteproperty(property._id)" class="delete-btn">Delete</button>
       </div>
     </div>
   </div>

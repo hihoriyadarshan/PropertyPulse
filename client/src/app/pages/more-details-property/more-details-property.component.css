@@ -25,6 +25,13 @@ body{
     flex-wrap: wrap;
   }
   
+  .g-maplink{
+    color: #6c6f73;
+    font-size: 20px;
+    color: #2bc4d3;
+  }
+
+  
   /* Column Styles */
   .col-md-61 {
     flex: 0 0 50%;
